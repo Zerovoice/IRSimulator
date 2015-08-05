@@ -1,0 +1,1069 @@
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[ 1273.352225] [DMX]_DMX_MUL_FreeTsIdx: u1Inst 0, u1TsIdx 0
+[ 1273.845937] [DMX]_DMX_MUL_AllocTsIdx: inst 0, u1TsIdx 0, eConnType 0
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+logcat -v threadtime '*:V'
+[ 1274.667912] [Help]
+[ 1274.668936] cd:                     Change current directory
+[ 1274.674564] do:                     Repeat command
+[ 1274.679387] alias(a):               Add/Show current alias
+[ 1274.684600] ls:                     Recursive list all commands
+[ 1274.690418] read(r):                Memory read(word)
+[ 1274.695432] write(w):               Memory write(word)
+[ 1274.700389] customer(cust):         Get customer name
+[ 1274.705332] basic_(b):              basic command
+[ 1274.710135] linuxmode(l):           Turn on/off linux mode
+[ 1274.715340] mtktool(0):             mtktool command
+[ 1274.720102] osd:                    Osd driver
+[ 1274.724443] pmx:                    pmx command
+[ 1274.728896] sif:                    Sif command
+[ 1274.733353] pwm:                    Pwm command
+[ 1274.737830] eeprom:                 Eeprom command
+[ 1274.742492] nim:                    Nim command
+[ 1274.746921] ir:                     Ir command
+[ 1274.751278] rtc(rtc):               RTC commands
+[ 1274.755821] aud:                    Aud command
+[ 1274.760246] nptv(n):                Nptv command
+[ 1274.764768] vdp:                    Video plane command
+[ 1274.769887] fbm:                    Frame buffer manager command
+[ 1274.775781] dbs:                    Dbs command
+[ 1274.780223] tcon:                   Tcon command
+[ 1274.784771] ptp:                    PTP control command
+[ 1274.789931] dmx(d):                 Demux commands
+[ 1274.794578] memtest:                Memory test
+[ 1274.799047] cec:                    HDMI CEC test
+[ 1274.803649] cbus:                   HDMI CBUS test
+[ 1274.808308] pdwnc(pdwnc):           PDWNC commands
+[ 1274.813048] gpio:                   Gpio interface
+[ 1274.817733] tve:                    Tve command
+[ 1274.822157] timeprofile:            timeprofile test
+[ 1274.827020] bim:                    BIM module test
+[ 1274.831874] pcmcia(p):              Pcmcia command
+[ 1274.836514] gfx:                    Gfx command
+[ 1274.841156] net:                    Net command
+[ 1274.845405] customer_cli(cust_cli): customer_cli
+[ 1274.850028] DTV>[Help]
+[ 1274.852205] cd:                     Change current directory
+[ 1274.858000] do:                     Repeat command
+[ 1274.862448] alias(a):               Add/Show current alias
+[ 1274.867904] ls:                     Recursive list all commands
+[ 1274.873667] read(r):                Memory read(word)
+[ 1274.878616] write(w):               Memory write(word)
+[ 1274.883665] customer(cust):         Get customer name
+[ 1274.888934] basic_(b):              basic command
+[ 1274.893231] linuxmode(l):           Turn on/off linux mode
+[ 1274.898626] mtktool(0):             mtktool command
+[ 1274.903390] osd:                    Osd driver
+[ 1274.907946] pmx:                    pmx command
+[ 1274.912180] sif:                    Sif command
+[ 1274.916607] pwm:                    Pwm command
+[ 1274.921232] eeprom:                 Eeprom command
+[ 1274.925778] nim:                    Nim command
+[ 1274.930219] ir:                     Ir command
+[ 1274.934575] rtc(rtc):               RTC commands
+[ 1274.939104] aud:                    Aud command
+[ 1274.943555] nptv(n):                Nptv command
+[ 1274.948088] vdp:                    Video plane command
+[ 1274.953182] fbm:                    Frame buffer manager command
+[ 1274.959317] dbs:                    Dbs command
+[ 1274.963523] tcon:                   Tcon command
+[ 1274.968187] ptp:                    PTP control command
+[ 1274.973206] dmx(d):                 Demux commands
+[ 1274.977850] memtest:                Memory test
+[ 1274.982300] cec:                    HDMI CEC test
+[ 1274.987117] cbus:                   HDMI CBUS test
+[ 1274.991624] pdwnc(pdwnc):           PDWNC commands
+[ 1274.996331] gpio:                   Gpio interface
+[ 1275.001034] tve:                    Tve command
+[ 1275.005634] timeprofile:            timeprofile test
+[ 1275.010322] bim:                    BIM module test
+[ 1275.015092] pcmcia(p):              Pcmcia command
+[ 1275.019764] gfx:                    Gfx command
+[ 1275.024248] net:                    Net command
+[ 1275.028713] customer_cli(cust_cli): customer_cli
+[ 1275.033210] DTV>set_ir_mode 30
+set_ir_mode 48
+[Help]
+[ 1276.446943] cd:                     Change current directory
+[ 1276.451737] do:                     Repeat command
+[ 1276.456397] alias(a):               Add/Show current alias
+[ 1276.462009] ls:                     Recursive list all commands
+[ 1276.467710] read(r):                Memory read(word)
+[ 1276.472576] write(w):               Memory write(word)
+[ 1276.477619] customer(cust):         Get customer name
+[ 1276.482535] basic_(b):              basic command
+[ 1276.487145] linuxmode(l):           Turn on/off linux mode
+[ 1276.492738] mtktool(0):             mtktool command
+[ 1276.497335] osd:                    Osd driver
+[ 1276.501795] pmx:                    pmx command
+[ 1276.506110] sif:                    Sif command
+[ 1276.510528] pwm:                    Pwm command
+[ 1276.515002] eeprom:                 Eeprom command
+[ 1276.519723] nim:                    Nim command
+[ 1276.524146] ir:                     Ir command
+[ 1276.528485] rtc(rtc):               RTC commands
+[ 1276.533020] aud:                    Aud command
+[ 1276.537451] nptv(n):                Nptv command
+[ 1276.542003] vdp:                    Video plane command
+[ 1276.547109] fbm:                    Frame buffer manager command
+[ 1276.552996] dbs:                    Dbs command
+[ 1276.557634] tcon:                   Tcon command
+[ 1276.561994] ptp:                    PTP control command
+[ 1276.567134] dmx(d):                 Demux commands
+[ 1276.571942] memtest:                Memory test
+[ 1276.576241] cec:                    HDMI CEC test
+[ 1276.580853] cbus:                   HDMI CBUS test
+[ 1276.585543] pdwnc(pdwnc):           PDWNC commands
+[ 1276.590240] gpio:                   Gpio interface
+[ 1276.594925] tve:                    Tve command
+[ 1276.599429] timeprofile:            timeprofile test
+[ 1276.604233] bim:                    BIM module test
+[ 1276.609234] pcmcia(p):              Pcmcia command
+[ 1276.613714] gfx:                    Gfx command
+[ 1276.618188] net:                    Net command
+[ 1276.622625] customer_cli(cust_cli): customer_cli
+[ 1276.627126] DTV>[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[ 1277.056946] [DMX]_DMX_MUL_FreeTsIdx: u1Inst 0, u1TsIdx 0
+[ 1277.558369] [DMX]_DMX_MUL_AllocTsIdx: inst 0, u1TsIdx 0, eConnType 0
+set_ir_mode 26
+[ 1277.630745] [Help]
+[ 1277.631189] cd:                     Change current directory
+[ 1277.636966] do:                     Repeat command
+[ 1277.641473] alias(a):               Add/Show current alias
+[ 1277.646838] ls:                     Recursive list all commands
+[ 1277.652680] read(r):                Memory read(word)
+[ 1277.657618] write(w):               Memory write(word)
+[ 1277.662677] customer(cust):         Get customer name
+[ 1277.667597] basic_(b):              basic command
+[ 1277.672198] linuxmode(l):           Turn on/off linux mode
+[ 1277.677578] mtktool(0):             mtktool command
+[ 1277.682486] osd:                    Osd driver
+[ 1277.686727] pmx:                    pmx command
+[ 1277.691146] sif:                    Sif command
+[ 1277.695623] pwm:                    Pwm command
+[ 1277.700056] eeprom:                 Eeprom command
+[ 1277.704747] nim:                    Nim command
+[ 1277.709168] ir:                     Ir command
+[ 1277.713571] rtc(rtc):               RTC commands
+[ 1277.718076] aud:                    Aud command
+[ 1277.722650] nptv(n):                Nptv command
+[ 1277.727037] vdp:                    Video plane command
+[ 1277.732322] fbm:                    Frame buffer manager command
+[ 1277.738050] dbs:                    Dbs command
+[ 1277.742537] tcon:                   Tcon command
+[ 1277.747018] ptp:                    PTP control command
+[ 1277.752142] dmx(d):                 Demux commands
+[ 1277.756840] memtest:                Memory test
+[ 1277.761289] cec:                    HDMI CEC test
+[ 1277.766109] cbus:                   HDMI CBUS test
+[ 1277.770590] pdwnc(pdwnc):           PDWNC commands
+[ 1277.775278] gpio:                   Gpio interface
+[ 1277.779958] tve:                    Tve command
+[ 1277.784420] timeprofile:            timeprofile test
+[ 1277.789303] bim:                    BIM module test
+[ 1277.794122] pcmcia(p):              Pcmcia command
+[ 1277.798990] gfx:                    Gfx command
+[ 1277.803226] net:                    Net command
+[ 1277.807668] customer_cli(cust_cli): customer_cli
+[ 1277.812188] DTV>[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 51
+[Help]
+[ 1279.207435] cd:                     Change current directory
+[ 1279.212164] do:                     Repeat command
+[ 1279.216839] alias(a):               Add/Show current alias
+[ 1279.222222] ls:                     Recursive list all commands
+[ 1279.228061] read(r):                Memory read(word)
+[ 1279.233015] write(w):               Memory write(word)
+[ 1279.238040] customer(cust):         Get customer name
+[ 1279.242971] basic_(b):              basic command
+[ 1279.247581] linuxmode(l):           Turn on/off linux mode
+[ 1279.253155] mtktool(0):             mtktool command
+[ 1279.257772] osd:                    Osd driver
+[ 1279.262104] pmx:                    pmx command
+[ 1279.266593] sif:                    Sif command
+[ 1279.271154] pwm:                    Pwm command
+[ 1279.275408] eeprom:                 Eeprom command
+[ 1279.280158] nim:                    Nim command
+[ 1279.284582] ir:                     Ir command
+[ 1279.288923] rtc(rtc):               RTC commands
+[ 1279.293445] aud:                    Aud command
+[ 1279.298027] nptv(n):                Nptv command
+[ 1279.302602] vdp:                    Video plane command
+[ 1279.307557] fbm:                    Frame buffer manager command
+[ 1279.313447] dbs:                    Dbs command
+[ 1279.317895] tcon:                   Tcon command
+[ 1279.322412] ptp:                    PTP control command
+[ 1279.327536] dmx(d):                 Demux commands
+[ 1279.332243] memtest:                Memory test
+[ 1279.336667] cec:                    HDMI CEC test
+[ 1279.341296] cbus:                   HDMI CBUS test
+[ 1279.346015] pdwnc(pdwnc):           PDWNC commands
+[ 1279.350699] gpio:                   Gpio interface
+[ 1279.355382] tve:                    Tve command
+[ 1279.359806] timeprofile:            timeprofile test
+[ 1279.364714] bim:                    BIM module test
+[ 1279.369486] pcmcia(p):              Pcmcia command
+[ 1279.374185] gfx:                    Gfx command
+[ 1279.378584] net:                    Net command
+[ 1279.383195] customer_cli(cust_cli): customer_cli
+[ 1279.387621] DTV>set_ir_mode 60
+[Help]
+[ 1280.587822] cd:                     Change current directory
+[ 1280.592544] do:                     Repeat command
+[ 1280.597577] alias(a):               Add/Show current alias
+[ 1280.602622] ls:                     Recursive list all commands
+[ 1280.608439] read(r):                Memory read(word)
+[ 1280.613372] write(w):               Memory write(word)
+[ 1280.618423] customer(cust):         Get customer name
+[ 1280.623397] basic_(b):              basic command
+[ 1280.628186] linuxmode(l):           Turn on/off linux mode
+[ 1280.633371] mtktool(0):             mtktool command
+[ 1280.638150] osd:                    Osd driver
+[ 1280.642509] pmx:                    pmx command
+[ 1280.646947] sif:                    Sif command
+[ 1280.651375] pwm:                    Pwm command
+[ 1280.655816] eeprom:                 Eeprom command
+[ 1280.660703] nim:                    Nim command
+[ 1280.664994] ir:                     Ir command
+[ 1280.669350] rtc(rtc):               RTC commands
+[ 1280.673875] aud:                    Aud command
+[ 1280.678296] nptv(n):                Nptv command
+[ 1280.682792] vdp:                    Video plane command
+[ 1280.687942] fbm:                    Frame buffer manager command
+[ 1280.693845] dbs:                    Dbs command
+[ 1280.698267] tcon:                   Tcon command
+[ 1280.702789] ptp:                    PTP control command
+[ 1280.707910] dmx(d):                 Demux commands
+[ 1280.712663] memtest:                Memory test
+[ 1280.717144] cec:                    HDMI CEC test
+[ 1280.721681] cbus:                   HDMI CBUS test
+[ 1280.726551] pdwnc(pdwnc):           PDWNC commands
+[ 1280.731064] gpio:                   Gpio interface
+[ 1280.735776] tve:                    Tve command
+[ 1280.740204] timeprofile:            timeprofile test
+[ 1280.745072] bim:                    BIM module test
+[ 1280.749856] pcmcia(p):              Pcmcia command
+[ 1280.754703] gfx:                    Gfx command
+[ 1280.759001] net:                    Net command
+[ 1280.763484] customer_cli(cust_cli): customer_cli
+[ 1280.767970] DTV>[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[ 1280.806001] [DMX]_DMX_MUL_FreeTsIdx: u1Inst 0, u1TsIdx 0
+[ 1281.242772] [DMX]_DMX_MUL_AllocTsIdx: inst 0, u1TsIdx 0, eConnType 0
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 43
+[ 1281.970022] [Help]
+[ 1281.970515] cd:                     Change current directory
+[ 1281.976208] do:                     Repeat command
+[ 1281.980794] alias(a):               Add/Show current alias
+[ 1281.986179] ls:                     Recursive list all commands
+[ 1281.991977] read(r):                Memory read(word)
+[ 1281.996914] write(w):               Memory write(word)
+[ 1282.001967] customer(cust):         Get customer name
+[ 1282.006956] basic_(b):              basic command
+[ 1282.011566] linuxmode(l):           Turn on/off linux mode
+[ 1282.016924] mtktool(0):             mtktool command
+[ 1282.021690] osd:                    Osd driver
+[ 1282.026042] pmx:                    pmx command
+[ 1282.030459] sif:                    Sif command
+[ 1282.034944] pwm:                    Pwm command
+[ 1282.039386] eeprom:                 Eeprom command
+[ 1282.044068] nim:                    Nim command
+[ 1282.048494] ir:                     Ir command
+[ 1282.052863] rtc(rtc):               RTC commands
+[ 1282.057400] aud:                    Aud command
+[ 1282.061891] nptv(n):                Nptv command
+[ 1282.066348] vdp:                    Video plane command
+[ 1282.071489] fbm:                    Frame buffer manager command
+[ 1282.077361] dbs:                    Dbs command
+[ 1282.081824] tcon:                   Tcon command
+[ 1282.086349] ptp:                    PTP control command
+[ 1282.091600] dmx(d):                 Demux commands
+[ 1282.096159] memtest:                Memory test
+[ 1282.100821] cec:                    HDMI CEC test
+[ 1282.105231] cbus:                   HDMI CBUS test
+[ 1282.109944] pdwnc(pdwnc):           PDWNC commands
+[ 1282.114627] gpio:                   Gpio interface
+[ 1282.119294] tve:                    Tve command
+[ 1282.123756] timeprofile:            timeprofile test
+[ 1282.128622] bim:                    BIM module test
+[ 1282.133392] pcmcia(p):              Pcmcia command
+[ 1282.138099] gfx:                    Gfx command
+[ 1282.142565] net:                    Net command
+[ 1282.147150] customer_cli(cust_cli): customer_cli
+[ 1282.151512] DTV>set_ir_mode 40
+[Help]
+[ 1283.648296] cd:                     Change current directory
+[ 1283.653312] do:                     Repeat command
+[ 1283.657792] alias(a):               Add/Show current alias
+[ 1283.663193] ls:                     Recursive list all commands
+[ 1283.668974] read(r):                Memory read(word)
+[ 1283.673897] write(w):               Memory write(word)
+[ 1283.678943] customer(cust):         Get customer name
+[ 1283.683889] basic_(b):              basic command
+[ 1283.688499] linuxmode(l):           Turn on/off linux mode
+[ 1283.693877] mtktool(0):             mtktool command
+[ 1283.698666] osd:                    Osd driver
+[ 1283.703016] pmx:                    pmx command
+[ 1283.707461] sif:                    Sif command
+[ 1283.711934] pwm:                    Pwm command
+[ 1283.716345] eeprom:                 Eeprom command
+[ 1283.721037] nim:                    Nim command
+[ 1283.725477] ir:                     Ir command
+[ 1283.729829] rtc(rtc):               RTC commands
+[ 1283.734363] aud:                    Aud command
+[ 1283.738797] nptv(n):                Nptv command
+[ 1283.743329] vdp:                    Video plane command
+[ 1283.748448] fbm:                    Frame buffer manager command
+[ 1283.754345] dbs:                    Dbs command
+[ 1283.758817] tcon:                   Tcon command
+[ 1283.763311] ptp:                    PTP control command
+[ 1283.768621] dmx(d):                 Demux commands
+[ 1283.773133] memtest:                Memory test
+[ 1283.777576] cec:                    HDMI CEC test
+[ 1283.782347] cbus:                   HDMI CBUS test
+[ 1283.786907] pdwnc(pdwnc):           PDWNC commands
+[ 1283.791597] gpio:                   Gpio interface
+[ 1283.796525] tve:                    Tve command
+[ 1283.800722] timeprofile:            timeprofile test
+[ 1283.805599] bim:                    BIM module test
+[ 1283.810376] pcmcia(p):              Pcmcia command
+[ 1283.815081] gfx:                    Gfx command
+[ 1283.819523] net:                    Net command
+[ 1283.823959] customer_cli(cust_cli): customer_cli
+[ 1283.828477] DTV>[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[ 1284.471424] [DMX]_DMX_MUL_FreeTsIdx: u1Inst 0, u1TsIdx 0
+[ 1284.962828] [DMX]_DMX_MUL_AllocTsIdx: inst 0, u1TsIdx 0, eConnType 0
+set_ir_mode 25
+[ 1285.127201] [Help]
+[ 1285.127638] cd:                     Change current directory
+[ 1285.133221] do:                     Repeat command
+[ 1285.138080] alias(a):               Add/Show current alias
+[ 1285.143321] ls:                     Recursive list all commands
+[ 1285.149126] read(r):                Memory read(word)
+[ 1285.154059] write(w):               Memory write(word)
+[ 1285.159097] customer(cust):         Get customer name
+[ 1285.164199] basic_(b):              basic command
+[ 1285.168655] linuxmode(l):           Turn on/off linux mode
+[ 1285.174059] mtktool(0):             mtktool command
+[ 1285.178837] osd:                    Osd driver
+[ 1285.183194] pmx:                    pmx command
+[ 1285.187801] sif:                    Sif command
+[ 1285.192130] pwm:                    Pwm command
+[ 1285.196503] eeprom:                 Eeprom command
+[ 1285.201322] nim:                    Nim command
+[ 1285.205794] ir:                     Ir command
+[ 1285.210012] rtc(rtc):               RTC commands
+[ 1285.214537] aud:                    Aud command
+[ 1285.218944] nptv(n):                Nptv command
+[ 1285.223536] vdp:                    Video plane command
+[ 1285.228623] fbm:                    Frame buffer manager command
+[ 1285.234536] dbs:                    Dbs command
+[ 1285.238944] tcon:                   Tcon command
+[ 1285.243466] ptp:                    PTP control command
+[ 1285.248692] dmx(d):                 Demux commands
+[ 1285.253452] memtest:                Memory test
+[ 1285.257741] cec:                    HDMI CEC test
+[ 1285.262346] cbus:                   HDMI CBUS test
+[ 1285.267049] pdwnc(pdwnc):           PDWNC commands
+[ 1285.271740] gpio:                   Gpio interface
+[ 1285.276452] tve:                    Tve command
+[ 1285.281045] timeprofile:            timeprofile test
+[ 1285.285767] bim:                    BIM module test
+[ 1285.290546] pcmcia(p):              Pcmcia command
+[ 1285.295224] gfx:                    Gfx command
+[ 1285.299686] net:                    Net command
+[ 1285.304119] customer_cli(cust_cli): customer_cli
+[ 1285.308651] DTV>[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 27
+[Help]
+[ 1286.606242] cd:                     Change current directory
+[ 1286.610983] do:                     Repeat command
+[ 1286.615659] alias(a):               Add/Show current alias
+[ 1286.621049] ls:                     Recursive list all commands
+[ 1286.627080] read(r):                Memory read(word)
+[ 1286.631803] write(w):               Memory write(word)
+[ 1286.636837] customer(cust):         Get customer name
+[ 1286.641783] basic_(b):              basic command
+[ 1286.646408] linuxmode(l):           Turn on/off linux mode
+[ 1286.651811] mtktool(0):             mtktool command
+[ 1286.656594] osd:                    Osd driver
+[ 1286.660917] pmx:                    pmx command
+[ 1286.665339] sif:                    Sif command
+[ 1286.669800] pwm:                    Pwm command
+[ 1286.674240] eeprom:                 Eeprom command
+[ 1286.678936] nim:                    Nim command
+[ 1286.683378] ir:                     Ir command
+[ 1286.687730] rtc(rtc):               RTC commands
+[ 1286.692255] aud:                    Aud command
+[ 1286.696698] nptv(n):                Nptv command
+[ 1286.701266] vdp:                    Video plane command
+[ 1286.706351] fbm:                    Frame buffer manager command
+[ 1286.712273] dbs:                    Dbs command
+[ 1286.716687] tcon:                   Tcon command
+[ 1286.721235] ptp:                    PTP control command
+[ 1286.726530] dmx(d):                 Demux commands
+[ 1286.731034] memtest:                Memory test
+[ 1286.735480] cec:                    HDMI CEC test
+[ 1286.740270] cbus:                   HDMI CBUS test
+[ 1286.744823] pdwnc(pdwnc):           PDWNC commands
+[ 1286.749490] gpio:                   Gpio interface
+[ 1286.754203] tve:                    Tve command
+[ 1286.758606] timeprofile:            timeprofile test
+[ 1286.763496] bim:                    BIM module test
+[ 1286.768283] pcmcia(p):              Pcmcia command
+[ 1286.772989] gfx:                    Gfx command
+[ 1286.777414] net:                    Net command
+[ 1286.781865] customer_cli(cust_cli): customer_cli
+[ 1286.786408] DTV>set_ir_mode 29
+[Help]
+[ 1287.789962] cd:                     Change current directory
+[ 1287.794728] do:                     Repeat command
+[ 1287.799435] alias(a):               Add/Show current alias
+[ 1287.804810] ls:                     Recursive list all commands
+[ 1287.810609] read(r):                Memory read(word)
+[ 1287.815571] write(w):               Memory write(word)
+[ 1287.820618] customer(cust):         Get customer name
+[ 1287.825573] basic_(b):              basic command
+[ 1287.830175] linuxmode(l):           Turn on/off linux mode
+[ 1287.835715] mtktool(0):             mtktool command
+[ 1287.840331] osd:                    Osd driver
+[ 1287.844685] pmx:                    pmx command
+[ 1287.849170] sif:                    Sif command
+[ 1287.853755] pwm:                    Pwm command
+[ 1287.858047] eeprom:                 Eeprom command
+[ 1287.862708] nim:                    Nim command
+[ 1287.867358] ir:                     Ir command
+[ 1287.871509] rtc(rtc):               RTC commands
+[ 1287.876064] aud:                    Aud command
+[ 1287.880456] nptv(n):                Nptv command
+[ 1287.885267] vdp:                    Video plane command
+[ 1287.890172] fbm:                    Frame buffer manager command
+[ 1287.896052] dbs:                    Dbs command
+[ 1287.900691] tcon:                   Tcon command
+[ 1287.904964] ptp:                    PTP control command
+[ 1287.910150] dmx(d):                 Demux commands
+[ 1287.914824] memtest:                Memory test
+[ 1287.919268] cec:                    HDMI CEC test
+[ 1287.923862] cbus:                   HDMI CBUS test
+[ 1287.928558] pdwnc(pdwnc):           PDWNC commands
+[ 1287.933424] gpio:                   Gpio interface
+[ 1287.937956] tve:                    Tve command
+[ 1287.942390] timeprofile:            timeprofile test
+[ 1287.947314] bim:                    BIM module test
+[ 1287.952212] pcmcia(p):              Pcmcia command
+[ 1287.956754] gfx:                    Gfx command
+[ 1287.961184] net:                    Net command
+[ 1287.965623] customer_cli(cust_cli): customer_cli
+[ 1287.970144] DTV>[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[ 1288.176150] [DMX]_DMX_MUL_FreeTsIdx: u1Inst 0, u1TsIdx 0
+[ 1288.662720] [DMX]_DMX_MUL_AllocTsIdx: inst 0, u1TsIdx 0, eConnType 0
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 42
+[ 1289.269035] [Help]
+[ 1289.269527] cd:                     Change current directory
+[ 1289.275125] do:                     Repeat command
+[ 1289.279795] alias(a):               Add/Show current alias
+[ 1289.285180] ls:                     Recursive list all commands
+[ 1289.290984] read(r):                Memory read(word)
+[ 1289.295945] write(w):               Memory write(word)
+[ 1289.300986] customer(cust):         Get customer name
+[ 1289.305929] basic_(b):              basic command
+[ 1289.310540] linuxmode(l):           Turn on/off linux mode
+[ 1289.315928] mtktool(0):             mtktool command
+[ 1289.320698] osd:                    Osd driver
+[ 1289.325266] pmx:                    pmx command
+[ 1289.329497] sif:                    Sif command
+[ 1289.333948] pwm:                    Pwm command
+[ 1289.338394] eeprom:                 Eeprom command
+[ 1289.343073] nim:                    Nim command
+[ 1289.347509] ir:                     Ir command
+[ 1289.351852] rtc(rtc):               RTC commands
+[ 1289.356390] aud:                    Aud command
+[ 1289.360830] nptv(n):                Nptv command
+[ 1289.365359] vdp:                    Video plane command
+[ 1289.370673] fbm:                    Frame buffer manager command
+[ 1289.376389] dbs:                    Dbs command
+[ 1289.380852] tcon:                   Tcon command
+[ 1289.385370] ptp:                    PTP control command
+[ 1289.390492] dmx(d):                 Demux commands
+[ 1289.395178] memtest:                Memory test
+[ 1289.399610] cec:                    HDMI CEC test
+[ 1289.404219] cbus:                   HDMI CBUS test
+[ 1289.408938] pdwnc(pdwnc):           PDWNC commands
+[ 1289.413751] gpio:                   Gpio interface
+[ 1289.418324] tve:                    Tve command
+[ 1289.422766] timeprofile:            timeprofile test
+[ 1289.427633] bim:                    BIM module test
+[ 1289.432442] pcmcia(p):              Pcmcia command
+[ 1289.437276] gfx:                    Gfx command
+[ 1289.441546] net:                    Net command
+[ 1289.445992] customer_cli(cust_cli): customer_cli
+[ 1289.450543] DTV>set_ir_mode 43
+[Help]
+[ 1290.452898] cd:                     Change current directory
+[ 1290.457671] do:                     Repeat command
+[ 1290.462364] alias(a):               Add/Show current alias
+[ 1290.467741] ls:                     Recursive list all commands
+[ 1290.473529] read(r):                Memory read(word)
+[ 1290.478674] write(w):               Memory write(word)
+[ 1290.483711] customer(cust):         Get customer name
+[ 1290.488472] basic_(b):              basic command
+[ 1290.493086] linuxmode(l):           Turn on/off linux mode
+[ 1290.498666] mtktool(0):             mtktool command
+[ 1290.503270] osd:                    Osd driver
+[ 1290.507584] pmx:                    pmx command
+[ 1290.512054] sif:                    Sif command
+[ 1290.516806] pwm:                    Pwm command
+[ 1290.520940] eeprom:                 Eeprom command
+[ 1290.525658] nim:                    Nim command
+[ 1290.530074] ir:                     Ir command
+[ 1290.534647] rtc(rtc):               RTC commands
+[ 1290.538943] aud:                    Aud command
+[ 1290.543403] nptv(n):                Nptv command
+[ 1290.547921] vdp:                    Video plane command
+[ 1290.553047] fbm:                    Frame buffer manager command
+[ 1290.558928] dbs:                    Dbs command
+[ 1290.563375] tcon:                   Tcon command
+[ 1290.567896] ptp:                    PTP control command
+[ 1290.573019] dmx(d):                 Demux commands
+[ 1290.577715] memtest:                Memory test
+[ 1290.582158] cec:                    HDMI CEC test
+[ 1290.586749] cbus:                   HDMI CBUS test
+[ 1290.591463] pdwnc(pdwnc):           PDWNC commands
+[ 1290.596176] gpio:                   Gpio interface
+[ 1290.600856] tve:                    Tve command
+[ 1290.605330] timeprofile:            timeprofile test
+[ 1290.610172] bim:                    BIM module test
+[ 1290.614964] pcmcia(p):              Pcmcia command
+[ 1290.619647] gfx:                    Gfx command
+[ 1290.624133] net:                    Net command
+[ 1290.628529] customer_cli(cust_cli): customer_cli
+[ 1290.633064] DTV>[0;32;32m[ALWAYS][debug_tools.h:cntr() L:22]time: 1438605714 -- 925[m
+[0;32;32m[ALWAYS][debug_tools.h:cntr() L:22]time: 1438605714 -- 2419[m
+set_ir_mode 34
+[Help]
+[ 1291.734998] cd:                     Change current directory
+[ 1291.739768] do:                     Repeat command
+[ 1291.744680] alias(a):               Add/Show current alias
+[ 1291.749845] ls:                     Recursive list all commands
+[ 1291.755681] read(r):                Memory read(word)
+[ 1291.760615] write(w):               Memory write(word)
+[ 1291.765657] customer(cust):         Get customer name
+[ 1291.770600] basic_(b):              basic command
+[ 1291.775220] linuxmode(l):           Turn on/off linux mode
+[ 1291.780609] mtktool(0):             mtktool command
+[ 1291.785366] osd:                    Osd driver
+[ 1291.789893] pmx:                    pmx command
+[ 1291.794184] sif:                    Sif command
+[ 1291.798602] pwm:                    Pwm command
+[ 1291.803046] eeprom:                 Eeprom command
+[ 1291.807924] nim:                    Nim command
+[ 1291.812230] ir:                     Ir command
+[ 1291.816620] rtc(rtc):               RTC commands
+[ 1291.821079] aud:                    Aud command
+[ 1291.825545] nptv(n):                Nptv command
+[ 1291.830044] vdp:                    Video plane command
+[ 1291.835232] fbm:                    Frame buffer manager command
+[ 1291.841350] dbs:                    Dbs command
+[ 1291.845555] tcon:                   Tcon command
+[ 1291.850038] ptp:                    PTP control command
+[ 1291.855504] dmx(d):                 Demux commands
+[ 1291.859870] memtest:                Memory test
+[ 1291.864311] cec:                    HDMI CEC test
+[ 1291.868896] cbus:                   HDMI CBUS test
+[ 1291.873591] pdwnc(pdwnc):           PDWNC commands
+[ 1291.878305] gpio:                   Gpio interface
+[ 1291.880966] [DMX]_DMX_MUL_FreeTsIdx: u1Inst 0, u1TsIdx 0
+[ 1291.888209] tve:                    Tve command
+[ 1291.892632] timeprofile:            timeprofile test
+[ 1291.897518] bim:                    BIM module test
+[ 1291.902291] pcmcia(p):              Pcmcia command
+[ 1291.907346] gfx:                    Gfx command
+[ 1291.911506] net:                    Net command
+[ 1291.915865] customer_cli(cust_cli): customer_cli
+[ 1291.920627] DTV>[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[ 1292.303292] [DMX]_DMX_MUL_AllocTsIdx: inst 0, u1TsIdx 0, eConnType 0
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 50
+[ 1293.310449] [Help]
+[ 1293.310887] cd:                     Change current directory
+[ 1293.316484] do:                     Repeat command
+[ 1293.321180] alias(a):               Add/Show current alias
+[ 1293.326750] ls:                     Recursive list all commands
+[ 1293.332383] read(r):                Memory read(word)
+[ 1293.337325] write(w):               Memory write(word)
+[ 1293.342358] customer(cust):         Get customer name
+[ 1293.347304] basic_(b):              basic command
+[ 1293.351998] linuxmode(l):           Turn on/off linux mode
+[ 1293.357323] mtktool(0):             mtktool command
+[ 1293.362280] osd:                    Osd driver
+[ 1293.366398] pmx:                    pmx command
+[ 1293.370886] sif:                    Sif command
+[ 1293.375467] pwm:                    Pwm command
+[ 1293.379750] eeprom:                 Eeprom command
+[ 1293.384460] nim:                    Nim command
+[ 1293.388895] ir:                     Ir command
+[ 1293.393432] rtc(rtc):               RTC commands
+[ 1293.397766] aud:                    Aud command
+[ 1293.402202] nptv(n):                Nptv command
+[ 1293.406726] vdp:                    Video plane command
+[ 1293.411874] fbm:                    Frame buffer manager command
+[ 1293.417788] dbs:                    Dbs command
+[ 1293.422196] tcon:                   Tcon command
+[ 1293.427001] ptp:                    PTP control command
+[ 1293.431856] dmx(d):                 Demux commands
+[ 1293.436577] memtest:                Memory test
+[ 1293.440993] cec:                    HDMI CEC test
+[ 1293.445625] cbus:                   HDMI CBUS test
+[ 1293.450305] pdwnc(pdwnc):           PDWNC commands
+[ 1293.454975] gpio:                   Gpio interface
+[ 1293.459683] tve:                    Tve command
+[ 1293.464129] timeprofile:            timeprofile test
+[ 1293.469210] bim:                    BIM module test
+[ 1293.473975] pcmcia(p):              Pcmcia command
+[ 1293.478481] gfx:                    Gfx command
+[ 1293.482912] net:                    Net command
+[ 1293.487400] customer_cli(cust_cli): customer_cli
+[ 1293.491903] DTV>[dtv_app_mtk]>
+[HTTP:1] XML parse errror in http_receiver_read_xml
+[dtv_app_mtk]>[<?xml version="1.0"?>
+[dtv_app_mtk]><root xmlns="urn:schemas-upnp-org:device-1-0" xmlns:pnpx="http://schemas.microsoft.com/windows/pnpx/2005/11" xmlns:df="http://schemas.microsoft.com/windows/2008/09/devicefoundation">
+[dtv_app_mtk]><specVersion>
+[dtv_app_mtk]><major>1</major>
+[dtv_app_mtk]><minor>0</minor>
+[dtv_app_mtk]></specVersion>
+[dtv_app_mtk]><device>
+[dtv_app_mtk]><pnpx:X_hardwareId>VEN_0033&amp;DEV_0006&amp;REV_01</pnpx:X_hardwareId>
+[dtv_app_mtk]><pnpx:X_compatibleId>MS_DigitalMediaDeviceClass_DMR_V001</pnpx:X_compatibleId>
+[dtv_app_mtk]><pnpx:X_deviceCategory>MediaDevices</pnpx:X_deviceCategory>
+[dtv_app_mtk]><df:X_deviceCategory> Multimedia.DMR</df:X_deviceCategory>
+[dtv_app_mtk]><df:X_modelId>Lex9</df:X_modelId>
+[dtv_app_mtk]><deviceType>urn:schemas-upnp-org:device:MediaRenderer:1</deviceType>
+[dtv_app_mtk]><friendlyName>LG HT DMR--7302</friendlyName>
+[dtv_app_mtk]><manufacturer>LG Electronics</manufacturer>
+[dtv_app_mtk]><manufacturerURL>http://www.lge.com</manufacturerURL>
+[dtv_app_mtk]><modelDescription>UPnP Media Renderer 1.0</modelDescription>
+[dtv_app_mtk]><modelName>MediaRenderer</modelName>
+[dtv_app_mtk]><modelNumber>1.0</modelNumber>
+[dtv_app_mtk]><modelURL>http://www.lge.com/</modelURL>
+[dtv_app_mtk]><serialNumber>123456789001</serialNumber>
+[dtv_app_mtk]><UDN>uuid:8e5b662e-a857-34c2-bb63-f7c2a9ae2a4b</UDN>
+[dtv_app_mtk]><UPC>123456789012</UPC>
+[dtv_app_mtk]><dlna:X_DLNADOC xmlns:dlna="urn:schemas-dlna-org:device-1-0">DMR-1.50</dlna:X_DLNADOC>
+[dtv_app_mtk]><serviceList>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:RenderingControl:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:RenderingControl</serviceId>
+[dtv_app_mtk]><SCPDURL>/RenderingControl1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/Re[Help]
+[ 1294.348036] cd:                     Change current directory
+[ 1294.354096] do:                     Repeat command
+[ 1294.358349] alias(a):               Add/Show current alias
+[ 1294.363692] ls:                     Recursive list all commands
+[ 1294.369487] read(r):                Memory read(word)
+[ 1294.374448] write(w):               Memory write(word)
+[ 1294.379496] customer(cust):         Get customer name
+[ 1294.384431] basic_(b):              basic command
+[ 1294.389041] linuxmode(l):           Turn on/off linux mode
+[ 1294.394421] mtktool(0):             mtktool command
+[ 1294.399212] osd:                    Osd driver
+[ 1294.403563] pmx:                    pmx command
+[ 1294.408187] sif:                    Sif command
+[ 1294.412449] pwm:                    Pwm command
+[ 1294.416891] eeprom:                 Eeprom command
+[ 1294.421822] nim:                    Nim command
+[ 1294.426040] ir:                     Ir command
+[ 1294.430412] rtc(rtc):               RTC commands
+[ 1294.434913] aud:                    Aud command
+[ 1294.439359] nptv(n):                Nptv command
+[ 1294.443857] vdp:                    Video plane command
+[ 1294.449006] fbm:                    Frame buffer manager command
+[ 1294.454888] dbs:                    Dbs command
+[ 1294.459331] tcon:                   Tcon command
+[ 1294.463858] ptp:                    PTP control command
+[ 1294.469032] dmx(d):                 Demux commands
+[ 1294.473682] memtest:                Memory test
+[ 1294.478113] cec:                    HDMI CEC test
+[ 1294.482770] cbus:                   HDMI CBUS test
+[ 1294.487648] pdwnc(pdwnc):           PDWNC commands
+[ 1294.492313] gpio:                   Gpio interface
+[ 1294.496862] tve:                    Tve command
+[ 1294.501281] timeprofile:            timeprofile test
+[ 1294.506309] bim:                    BIM module test
+[ 1294.510957] pcmcia(p):              Pcmcia command
+[ 1294.515637] gfx:                    Gfx command
+[ 1294.520281] net:                    Net command
+[ 1294.524497] customer_cli(cust_cli): customer_cli
+[ 1294.529044] DTV>nderingControl1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/RenderingControl1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId>
+[dtv_app_mtk]><SCPDURL>/ConnectionManager1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/ConnectionManager1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/ConnectionManager1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:AVTransport:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:AVTransport</serviceId>
+[dtv_app_mtk]><SCPDURL>/AVTransport1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/AVTransport1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/AVTransport1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]></serviceList>
+[dtv_app_mtk]><presentationURL>/Presentation.html</presentationURL>
+[dtv_app_mtk]></device>
+[dtv_app_mtk]></root>
+[dtv_app_mtk]>]
+logcat -v threadtime '*:V'
+[dtv_app_mtk]>[HTTP:1] XML parse errror in http_receiver_read_xml
+[dtv_app_mtk]>[<?xml version="1.0"?>
+[dtv_app_mtk]><root xmlns="urn:schemas-upnp-org:device-1-0" xmlns:pnpx="http://schemas.microsoft.com/windows/pnpx/2005/11" xmlns:df="http://schemas.microsoft.com/windows/2008/09/devicefoundation">
+[dtv_app_mtk]><specVersion>
+[dtv_app_mtk]><major>1</major>
+[dtv_app_mtk]><minor>0</minor>
+[dtv_app_mtk]></specVersion>
+[dtv_app_mtk]><device>
+[dtv_app_mtk]><pnpx:X_hardwareId>VEN_0033&amp;DEV_0006&amp;REV_01</pnpx:X_hardwareId>
+[dtv_app_mtk]><pnpx:X_compatibleId>MS_DigitalMediaDeviceClass_DMR_V001</pnpx:X_compatibleId>
+[dtv_app_mtk]><pnpx:X_deviceCategory>MediaDevices</pnpx:X_deviceCategory>
+[dtv_app_mtk]><df:X_deviceCategory> Multimedia.DMR</df:X_deviceCategory>
+[dtv_app_mtk]><df:X_modelId>Lex9</df:X_modelId>
+[dtv_app_mtk]><deviceType>urn:schemas-upnp-org:device:MediaRenderer:1</deviceType>
+[dtv_app_mtk]><friendlyName>LG HT DMR--7302</friendlyName>
+[dtv_app_mtk]><manufacturer>LG Electronics</manufacturer>
+[dtv_app_mtk]><manufacturerURL>http://www.lge.com</manufacturerURL>
+[dtv_app_mtk]><modelDescription>UPnP Media Renderer 1.0</modelDescription>
+[dtv_app_mtk]><modelName>MediaRenderer</modelName>
+[dtv_app_mtk]><modelNumber>1.0</modelNumber>
+[dtv_app_mtk]><modelURL>http://www.lge.com/</modelURL>
+[dtv_app_mtk]><serialNumber>123456789001</serialNumber>
+[dtv_app_mtk]><UDN>uuid:8e5b662e-a857-34c2-bb63-f7c2a9ae2a4b</UDN>
+[dtv_app_mtk]><UPC>123456789012</UPC>
+[dtv_app_mtk]><dlna:X_DLNADOC xmlns:dlna="urn:schemas-dlna-org:device-1-0">DMR-1.50</dlna:X_DLNADOC>
+[dtv_app_mtk]><serviceList>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:RenderingControl:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:RenderingControl</serviceId>
+[dtv_app_mtk]><SCPDURL>/RenderingControl1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/RenderingControl1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/RenderingControl1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId>
+[dtv_app_mtk]><SCPDURL>/ConnectionManager1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/ConnectionManager1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/ConnectionManager1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:AVTransport:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:AVTransport</serviceId>
+[dtv_app_mtk]><SCPDURL>/AVTransport1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/AVTransport1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/AVTransport1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]></serviceList>
+[dtv_app_mtk]><presentationURL>/Presentation.html</presentationURL>
+[dtv_app_mtk]></device>
+[dtv_app_mtk]></root>
+[dtv_app_mtk]>]
+set_ir_mode 50
+[Help]
+[ 1295.183091] cd:                     Change current directory
+[ 1295.187818] do:                     Repeat command
+[ 1295.192496] alias(a):               Add/Show current alias
+[ 1295.198019] ls:                     Recursive list all commands
+[ 1295.203696] read(r):                Memory read(word)
+[ 1295.208654] write(w):               Memory write(word)
+[ 1295.213680] customer(cust):         Get customer name
+[ 1295.218650] basic_(b):              basic command
+[ 1295.223250] linuxmode(l):           Turn on/off linux mode
+[ 1295.228671] mtktool(0):             mtktool command
+[ 1295.233416] osd:                    Osd driver
+[ 1295.237901] pmx:                    pmx command
+[ 1295.242399] sif:                    Sif command
+[ 1295.246671] pwm:                    Pwm command
+[ 1295.251098] eeprom:                 Eeprom command
+[ 1295.255780] nim:                    Nim command
+[ 1295.260259] ir:                     Ir command
+[ 1295.264603] rtc(rtc):               RTC commands
+[ 1295.269126] aud:                    Aud command
+[ 1295.273747] nptv(n):                Nptv command
+[ 1295.278200] vdp:                    Video plane command
+[ 1295.283222] fbm:                    Frame buffer manager command
+[ 1295.289298] dbs:                    Dbs command
+[ 1295.293553] tcon:                   Tcon command
+[ 1295.298060] ptp:                    PTP control command
+[ 1295.303191] dmx(d):                 Demux commands
+[ 1295.308106] memtest:                Memory test
+[ 1295.312338] cec:                    HDMI CEC test
+[ 1295.317059] cbus:                   HDMI CBUS test
+[ 1295.321807] pdwnc(pdwnc):           PDWNC commands
+[ 1295.326335] gpio:                   Gpio interface
+[ 1295.331032] tve:                    Tve command
+[ 1295.335481] timeprofile:            timeprofile test
+[ 1295.340525] bim:                    BIM module test
+[ 1295.345144] pcmcia(p):              Pcmcia command
+[ 1295.349824] gfx:                    Gfx command
+[ 1295.354250] net:                    Net command
+[ 1295.358829] customer_cli(cust_cli): customer_cli
+[ 1295.363236] DTV>[dtv_app_mtk]>{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[ 1295.516794] [DMX]_DMX_MUL_FreeTsIdx: u1Inst 0, u1TsIdx 0
+[dtv_app_mtk]>
+[HTTP:1] XML parse errror in http_receiver_read_xml
+[dtv_app_mtk]>[<?xml version="1.0"?>
+[dtv_app_mtk]><root xmlns="urn:schemas-upnp-org:device-1-0" xmlns:pnpx="http://schemas.microsoft.com/windows/pnpx/2005/11" xmlns:df="http://schemas.microsoft.com/windows/2008/09/devicefoundation">
+[dtv_app_mtk]><specVersion>
+[dtv_app_mtk]><major>1</major>
+[dtv_app_mtk]><minor>0</minor>
+[dtv_app_mtk]></specVersion>
+[dtv_app_mtk]><device>
+[dtv_app_mtk]><pnpx:X_hardwareId>VEN_0033&amp;DEV_0006&amp;REV_01</pnpx:X_hardwareId>
+[dtv_app_mtk]><pnpx:X_compatibleId>MS_DigitalMediaDeviceClass_DMR_V001</pnpx:X_compatibleId>
+[dtv_app_mtk]><pnpx:X_deviceCategory>MediaDevices</pnpx:X_deviceCategory>
+[dtv_app_mtk]><df:X_deviceCategory> Multimedia.DMR</df:X_deviceCategory>
+[dtv_app_mtk]><df:X_modelId>Lex9</df:X_modelId>
+[dtv_app_mtk]><deviceType>urn:schemas-upnp-org:device:MediaRenderer:1</deviceType>
+[dtv_app_mtk]><friendlyName>LG HT DMR--7302</friendlyName>
+[dtv_app_mtk]><manufacturer>LG Electronics</manufacturer>
+[dtv_app_mtk]><manufacturerURL>http://www.lge.com</manufacturerURL>
+[dtv_app_mtk]><modelDescription>UPnP Media Renderer 1.0</modelDescription>
+[dtv_app_mtk]><modelName>MediaRenderer</modelName>
+[dtv_app_mtk]><modelNumber>1.0</modelNumber>
+[dtv_app_mtk]><modelURL>http://www.lge.com/</modelURL>
+[dtv_app_mtk]><serialNumber>123456789001</serialNumber>
+[dtv_app_mtk]><UDN>uuid:8e5b662e-a857-34c2-bb63-f7c2a9ae2a4b</UDN>
+[dtv_app_mtk]><UPC>123456789012</UPC>
+[dtv_app_mtk]><dlna:X_DLNADOC xmlns:dlna="urn:schemas-dlna-org:device-1-0">DMR-1.50</dlna:X_DLNADOC>
+[dtv_app_mtk]><serviceList>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:RenderingControl:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:RenderingControl</serviceId>
+[dtv_app_mtk]><SCPDURL>/RenderingControl1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/RenderingControl1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/RenderingControl1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId>
+[dtv_app_mtk]><SCPDURL>/ConnectionManager1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/ConnectionManager1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/ConnectionManager1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:AVTransport:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:AVTransport</serviceId>
+[dtv_app_mtk]><SCPDURL>/AVTransport1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/AVTransport1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/AVTransport1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]></serviceList>
+[dtv_app_mtk]><presentationURL>/Presentation.html</presentationURL>
+[dtv_app_mtk]></device>
+[dtv_app_mtk]></root>
+[dtv_app_mtk]>]
+[ 1296.006333] [DMX]_DMX_MUL_AllocTsIdx: inst 0, u1TsIdx 0, eConnType 0
+[dtv_app_mtk]>{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 45
+[ 1296.858960] [Help]
+[ 1296.859403] cd:                     Change current directory
+[ 1296.865001] do:                     Repeat command
+[ 1296.869723] alias(a):               Add/Show current alias
+[ 1296.875233] ls:                     Recursive list all commands
+[ 1296.880872] read(r):                Memory read(word)
+[ 1296.885818] write(w):               Memory write(word)
+[ 1296.891322] customer(cust):         Get customer name
+[ 1296.895860] basic_(b):              basic command
+[ 1296.900459] linuxmode(l):           Turn on/off linux mode
+[ 1296.905997] mtktool(0):             mtktool command
+[ 1296.910622] osd:                    Osd driver
+[ 1296.914945] pmx:                    pmx command
+[ 1296.919407] sif:                    Sif command
+[ 1296.924000] pwm:                    Pwm command
+[ 1296.928240] eeprom:                 Eeprom command
+[ 1296.933079] nim:                    Nim command
+[ 1296.937409] ir:                     Ir command
+[ 1296.941776] rtc(rtc):               RTC commands
+[ 1296.946295] aud:                    Aud command
+[ 1296.950756] nptv(n):                Nptv command
+[ 1296.955253] vdp:                    Video plane command
+[ 1296.960369] fbm:                    Frame buffer manager command
+[ 1296.966281] dbs:                    Dbs command
+[ 1296.970997] tcon:                   Tcon command
+[ 1296.975258] ptp:                    PTP control command
+[ 1296.980368] dmx(d):                 Demux commands
+[ 1296.985062] memtest:                Memory test
+[ 1296.989694] cec:                    HDMI CEC test
+[ 1296.994100] cbus:                   HDMI CBUS test
+[ 1296.998802] pdwnc(pdwnc):           PDWNC commands
+[ 1297.003510] gpio:                   Gpio interface
+[ 1297.008220] tve:                    Tve command
+[ 1297.012633] timeprofile:            timeprofile test
+[ 1297.017535] bim:                    BIM module test
+[ 1297.022465] pcmcia(p):              Pcmcia command
+[ 1297.026967] gfx:                    Gfx command
+[ 1297.031441] net:                    Net command
+[ 1297.035870] customer_cli(cust_cli): customer_cli
+[ 1297.040614] DTV>get i_tz = 1.000000.
+get utc = 1438605705.
+c_dt_utc_sec_to_loc_dtg res = 0.
+dst=1, gmt=0, day=3, dow=1, hr=14, min=41, mo=8, sec=45, yr=2015.
+time vec[1] = 2015.
+time vec[2] = 8.
+time vec[3] = 3.
+time vec[4] = 14.
+time vec[5] = 41.
+time vec[6] = 45.
+<TIME>store total offset into eeprom.
+[TIMER_FUNCTION]:<TIME>storeDstIntoEEPROM:current dst = 1.
+[TIMER_FUNCTION]:<TIME>storeDstIntoEEPROM:current dst_offset = 1.
+[1;33m[JS-WARN][00m [ main.js:308 ]___________[2015,8,3,14,41,45]; 1
+set_ir_mode 45
+[Help]
+[ 1298.141089] cd:                     Change current directory
+[ 1298.145857] do:                     Repeat command
+[ 1298.150888] alias(a):               Add/Show current alias
+[ 1298.155924] ls:                     Recursive list all commands
+[ 1298.161745] read(r):                Memory read(word)
+[ 1298.166853] write(w):               Memory write(word)
+[ 1298.171750] customer(cust):         Get customer name
+[ 1298.176686] basic_(b):              basic command
+[ 1298.181473] linuxmode(l):           Turn on/off linux mode
+[ 1298.186669] mtktool(0):             mtktool command
+[ 1298.191457] osd:                    Osd driver
+[ 1298.195809] pmx:                    pmx command
+[ 1298.200443] sif:                    Sif command
+[ 1298.204693] pwm:                    Pwm command
+[ 1298.209142] eeprom:                 Eeprom command
+[ 1298.213816] nim:                    Nim command
+[ 1298.218294] ir:                     Ir command
+[ 1298.222609] rtc(rtc):               RTC commands
+[ 1298.227162] aud:                    Aud command
+[ 1298.231919] nptv(n):                Nptv command
+[ 1298.236111] vdp:                    Video plane command
+[ 1298.241261] fbm:                    Frame buffer manager command
+[ 1298.247359] dbs:                    Dbs command
+[ 1298.251551] tcon:                   Tcon command
+[ 1298.256096] ptp:                    PTP control command
+[ 1298.261235] dmx(d):                 Demux commands
+[ 1298.265913] memtest:                Memory test
+[ 1298.270363] cec:                    HDMI CEC test
+[ 1298.274998] cbus:                   HDMI CBUS test
+[ 1298.279667] pdwnc(pdwnc):           PDWNC commands
+[ 1298.284354] gpio:                   Gpio interface
+[ 1298.289060] tve:                    Tve command
+[ 1298.293500] timeprofile:            timeprofile test
+[ 1298.298588] bim:                    BIM module test
+[ 1298.303157] pcmcia(p):              Pcmcia command
+[ 1298.307849] gfx:                    Gfx command
+[ 1298.312471] net:                    Net command
+[ 1298.316727] customer_cli(cust_cli): customer_cli
+[ 1298.321259] DTV>[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[ 1299.226633] [DMX]_DMX_MUL_FreeTsIdx: u1Inst 0, u1TsIdx 0
+set_ir_mode 27
+[ 1299.521750] [Help]
+[ 1299.522241] cd:                     Change current directory
+[ 1299.527962] do:                     Repeat command
+[ 1299.532543] alias(a):               Add/Show current alias
+[ 1299.537889] ls:                     Recursive list all commands
+[ 1299.543687] read(r):                Memory read(word)
+[ 1299.548687] write(w):               Memory write(word)
+[ 1299.553870] customer(cust):         Get customer name
+[ 1299.558665] basic_(b):              basic command
+[ 1299.563245] linuxmode(l):           Turn on/off linux mode
+[ 1299.568749] mtktool(0):             mtktool command
+[ 1299.573451] osd:                    Osd driver
+[ 1299.577789] pmx:                    pmx command
+[ 1299.582218] sif:                    Sif command
+[ 1299.586854] pwm:                    Pwm command
+[ 1299.591099] eeprom:                 Eeprom command
+[ 1299.595798] nim:                    Nim command
+[ 1299.600222] ir:                     Ir command
+[ 1299.604784] rtc(rtc):               RTC commands
+[ 1299.609216] aud:                    Aud command
+[ 1299.613560] nptv(n):                Nptv command
+[ 1299.618091] vdp:                    Video plane command
+[ 1299.623393] fbm:                    Frame buffer manager command
+[ 1299.629129] dbs:                    Dbs command
+[ 1299.633550] tcon:                   Tcon command
+[ 1299.638254] ptp:                    PTP control command
+[ 1299.643193] dmx(d):                 Demux commands
+[ 1299.647908] memtest:                Memory test
+[ 1299.652344] cec:                    HDMI CEC test
+[ 1299.656939] cbus:                   HDMI CBUS test
+[ 1299.661636] pdwnc(pdwnc):           PDWNC commands
+[ 1299.666330] gpio:                   Gpio interface
+[ 1299.671213] tve:                    Tve command
+[ 1299.675495] timeprofile:            timeprofile test
+[ 1299.680337] bim:                    BIM module test
+[ 1299.685142] pcmcia(p):              Pcmcia command
+[ 1299.689819] gfx:                    Gfx command
+[ 1299.694284] net:                    Net command
+[ 1299.698698] customer_cli(cust_cli): customer_cli
+[ 1299.703380] DTV>
+[ 1299.716233] [DMX]_DMX_MUL_AllocTsIdx: inst 0, u1TsIdx 0, eConnType 0
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol

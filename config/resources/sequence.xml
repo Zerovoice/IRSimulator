@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type='text/xsl'?>
+
+<Sequence> 
+  <STEPS name="aa"> 
+    <STEP index="1" note="小聪" value="MENU" interval="2.2"/>  
+    <STEP index="2" note="主页" value="HOME" interval="88.1"/>  
+    <STEP index="3" note="1" value="ONE" interval=""/> 
+  </STEPS> 
+</Sequence>

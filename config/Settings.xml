@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+	<SETTINGS>
+	    <DevTmpDir>/sdcard</DevTmpDir>
+		<AssertList>
+			<assertlog isexist='false'>FATAL EXCEPTION</assertlog> 
+			<assertlog isexist='false'>ANR </assertlog>
+		</AssertList>
+		<ResrcWatchRate>1</ResrcWatchRate>
+	</SETTINGS>
+</CONFIG>

@@ -1,0 +1,200 @@
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+[dtv_app_mtk]>
+<ACFG>Regular timer reached... run regular update! 
+[dtv_app_mtk]>
+[BGM-caoyonghong] bgm_get_runnable_component_mask, a_cfg_update_timer_power_ex, 13578, mymask=0
+[dtv_app_mtk]>
+==>[acfg_common.c 2032]m_regular_delay = 60000
+[dtv_app_mtk]>
+==>[acfg_common.c 2033]startTime = 0, current = 0, endTime = 0
+[dtv_app_mtk]>
+==>[acfg_common.c 2034]b_time_interval_lock = 0
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+[0;32;32m[ALWAYS][debug_tools.h:cntr() L:22]time: 1438604784 -- 2398[m
+[0;32;32m[ALWAYS][debug_tools.h:cntr() L:22]time: 1438604784 -- 943[m
+[dtv_app_mtk]>
+26:25 Client Info      Processing msg (INF-REQUEST,transID=0x5af0a3,opts: 1 8 6)
+[dtv_app_mtk]>26:25 Client Debug     Sending INF-REQUEST(opts:1 8 6 ) on wlan0/5 to multicast.
+[dtv_app_mtk]>26:25 Client Debug     Sleeping for 130 second(s).
+[dtv_app_mtk]>{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[dtv_app_mtk]>
+MTDRVCUST_OptQuery() fail, ret=-1
+[dtv_app_mtk]>MTDRVCUST_OptQuery() fail, ret=-1
+[dtv_app_mtk]>MTDRVCUST_OptQuery() fail, ret=-1
+[dtv_app_mtk]>MTDRVCUST_OptQuery() fail, ret=-1
+[dtv_app_mtk]>MTDRVCUST_OptQuery() fail, ret=-1
+[dtv_app_mtk]>MTDRVCUST_OptQuery() fail, ret=-1
+[dtv_app_mtk]>MTDRVCUST_OptQuery() fail, ret=-1
+[dtv_app_mtk]>[HTTP:1] XML parse errror in http_receiver_read_xml
+[dtv_app_mtk]>[/event/RenderingControl1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId>
+[dtv_app_mtk]><SCPDURL>/ConnectionManager1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/ConnectionManager1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/ConnectionManager1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:AVTransport:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:AVTransport</serviceId>
+[dtv_app_mtk]><SCPDURL>/AVTransport1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/AVTransport1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/AVTransport1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]></serviceList>
+[dtv_app_mtk]><presentationURL>/Presentation.html</presentationURL>
+[dtv_app_mtk]></device>
+[dtv_app_mtk]></root>
+[dtv_app_mtk]>]
+[dtv_app_mtk]>{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+[dtv_app_mtk]>
+[HTTP:1] XML parse errror in http_receiver_read_xml
+[dtv_app_mtk]>[<?xml version="1.0"?>
+[dtv_app_mtk]><root xmlns="urn:schemas-upnp-org:device-1-0" xmlns:pnpx="http://schemas.microsoft.com/windows/pnpx/2005/11" xmlns:df="http://schemas.microsoft.com/windows/2008/09/devicefoundation">
+[dtv_app_mtk]><specVersion>
+[dtv_app_mtk]><major>1</major>
+[dtv_app_mtk]><minor>0</minor>
+[dtv_app_mtk]></specVersion>
+[dtv_app_mtk]><device>
+[dtv_app_mtk]><pnpx:X_hardwareId>VEN_0033&amp;DEV_0006&amp;REV_01</pnpx:X_hardwareId>
+[dtv_app_mtk]><pnpx:X_compatibleId>MS_DigitalMediaDeviceClass_DMR_V001</pnpx:X_compatibleId>
+[dtv_app_mtk]><pnpx:X_deviceCategory>MediaDevices</pnpx:X_deviceCategory>
+[dtv_app_mtk]><df:X_deviceCategory> Multimedia.DMR</df:X_deviceCategory>
+[dtv_app_mtk]><df:X_modelId>Lex9</df:X_modelId>
+[dtv_app_mtk]><deviceType>urn:schemas-upnp-org:device:MediaRenderer:1</deviceType>
+[dtv_app_mtk]><friendlyName>LG HT DMR--7302</friendlyName>
+[dtv_app_mtk]><manufacturer>LG Electronics</manufacturer>
+[dtv_app_mtk]><manufacturerURL>http://www.lge.com</manufacturerURL>
+[dtv_app_mtk]><modelDescription>UPnP Media Renderer 1.0</modelDescription>
+[dtv_app_mtk]><modelName>MediaRenderer</modelName>
+[dtv_app_mtk]><modelNumber>1.0</modelNumber>
+[dtv_app_mtk]><modelURL>http://www.lge.com/</modelURL>
+[dtv_app_mtk]><serialNumber>123456789001</serialNumber>
+[dtv_app_mtk]><UDN>uuid:8e5b662e-a857-34c2-bb63-f7c2a9ae2a4b</UDN>
+[dtv_app_mtk]><UPC>123456789012</UPC>
+[dtv_app_mtk]><dlna:X_DLNADOC xmlns:dlna="urn:schemas-dlna-org:device-1-0">DMR-1.50</dlna:X_DLNADOC>
+[dtv_app_mtk]><serviceList>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:RenderingControl:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:RenderingControl</serviceId>
+[dtv_app_mtk]><SCPDURL>/RenderingControl1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/RenderingControl1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/RenderingControl1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:ConnectionManager</serviceId>
+[dtv_app_mtk]><SCPDURL>/ConnectionManager1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/ConnectionManager1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/ConnectionManager1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]><service>
+[dtv_app_mtk]><serviceType>urn:schemas-upnp-org:service:AVTransport:1</serviceType>
+[dtv_app_mtk]><serviceId>urn:upnp-org:serviceId:AVTransport</serviceId>
+[dtv_app_mtk]><SCPDURL>/AVTransport1.xml</SCPDURL>
+[dtv_app_mtk]><controlURL>/upnp/control/AVTransport1</controlURL>
+[dtv_app_mtk]><eventSubURL>/upnp/event/AVTransport1</eventSubURL>
+[dtv_app_mtk]></service>
+[dtv_app_mtk]></serviceList>
+[dtv_app_mtk]><presentationURL>/Presentation.html</presentationURL>
+[dtv_app_mtk]></device>
+[dtv_app_mtk]></root>
+[dtv_app_mtk]>]
+[dtv_app_mtk]>[HTTP:1] XML parse errror in http_receiver_read_xml
+[dtv_app_mtk]>[<?xml version="1.0"?>
+[dtv_app_mtk]><root xmlns="urn:schemas-upnp-org:device-1-0" xmlns:pnpx="http://schemas.microsoft.com/windows/pnpx/2005/11" xmlns:df="http://schemas.mic
+logcat -v threadtime '*:V'
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 34
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+set_ir_mode 27
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 30
+set_ir_mode 39
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 38
+set_ir_mode 27
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  524] Stop the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[ 2342] SB_DVB_MSG_BRDCST_ROOT_NFY    
+[dtv_app_mtk]>
+{DVBT}[  305] Start the monitoring ...
+[dtv_app_mtk]>
+{DVBT}[  367] 		 no LCNv2 lol
+set_ir_mode 48
