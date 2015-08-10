@@ -6,13 +6,14 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 
 
 public class PgEditStepOrder extends Composite{
-    PgEditStepOrder(Composite parent,int style) {
+
+    public PgEditStepOrder(Composite parent, int style) {
         super(parent,style);
     }
 

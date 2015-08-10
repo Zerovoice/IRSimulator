@@ -1,25 +1,26 @@
 ﻿
 package com.hisense.autotest.automation;
 
-import java.awt.Frame;
 import org.apache.log4j.Logger;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.events.ShellListener;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.swt.widgets.Text;
+
+import java.awt.Frame;
 
 import com.hisense.autotest.common.Resources;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.ModifyEvent;
 
 public class PgIRSimulator extends SmartAuto {
 
@@ -33,6 +34,7 @@ public class PgIRSimulator extends SmartAuto {
     private PgRIR pgRIR = new PgRIR();
     private PgEIR pgEIR = new PgEIR();
     private PgTrans pgTrans = new PgTrans();
+    private PgMakeCase pgZxb = new PgMakeCase();
     public static Group grpRandom;
     public static Group grpMaunal;
     public static Group grpExecute;
@@ -194,6 +196,13 @@ public class PgIRSimulator extends SmartAuto {
         grpTrans = new Group(tabFolder, SWT.NONE);
         tbtmTrans.setControl(grpTrans);
         pgTrans.createTransContents(shell, grpTrans);
+        // zxb mode
+        TabItem tbtmzxb = new TabItem(tabFolder, SWT.NONE);
+        tbtmzxb.setText("zxb");
+
+        Group grpZXB = new Group(tabFolder, SWT.NONE);
+        tbtmzxb.setControl(grpZXB);
+        pgZxb.createMContents(shell, grpZXB);
 
     }
 

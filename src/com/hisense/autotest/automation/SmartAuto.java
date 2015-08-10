@@ -1,6 +1,19 @@
 
 package com.hisense.autotest.automation;
 
+import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Text;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,19 +28,6 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Properties;
-
-import org.apache.log4j.Logger;
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.MessageBox;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.swt.widgets.Text;
 
 import com.hisense.autotest.action.AdbMonitorThread;
 import com.hisense.autotest.action.ExecEScriptTh;
@@ -164,6 +164,87 @@ public class SmartAuto {
             TableItem tableItem = new TableItem(tblScript, SWT.NONE);
             tableItem.setText(new String[] { String.valueOf(itemCnt + 1), keyEncode, name, "", "",
                     propKey });
+            tblScript.setTopIndex(itemCnt + 1);
+
+            // 同步执行按键操作
+            if (encode == Resources.ENCODE_KEYCODE) {
+                if (isLinuxTV) {// KENNETH whale TV
+                    if (connDevComSuccss) {
+                        spDev.write("set_ir_mode " + keyEncode);
+                        logger.debug("发送的键值为 set_ir_mode " + keyEncode);
+                    }
+                } else {
+                    if (!"".equals(deviceIp)) {
+                        adbOperation.keyevent(deviceIp, keyEncode);
+                    }
+                }
+
+            } else if (encode == Resources.ENCODE_NEC || encode == Resources.ENCODE_RC5) {
+                if (connIRComSuccss) {
+                    String[] currItemKeys = tableItem.getText(Resources.SCRIPT_COL_KEY).split("-");
+                    byte[] inputvalues = new byte[5];
+                    inputvalues[0] = (byte) (Integer.parseInt(currItemKeys[0], 16));
+                    inputvalues[1] = (byte) (Integer.parseInt(currItemKeys[1], 16));
+                    inputvalues[2] = (byte) (Integer.parseInt(currItemKeys[2], 16));
+                    inputvalues[3] = (byte) (Integer.parseInt(currItemKeys[3], 16));
+                    inputvalues[4] = (byte) (Integer.parseInt(currItemKeys[4], 16));
+                    spIR.write(inputvalues);
+                }
+            }
+        } catch (Exception e) {
+            errMsg = e.getMessage();
+            logger.error(errMsg, e);
+        }
+        return errMsg;
+    }
+
+    /**
+     * <p>
+     * Title: zxb.
+     * </p>
+     * <p>
+     * Description: zxb.
+     * </p>
+     * 
+     * @param tblScript
+     * @param deviceIp
+     * @param strFixedInt
+     * @param encode
+     * @param propKey
+     * @param name
+     * @return
+     */
+    public static String recordAndExcuKeyEvent(Table tblScript, String deviceIp, String strFixedInt,
+            int encode, String propKey, String name) {
+        String errMsg = "";
+        try {
+            String key = Resources.ENCODE_PREFIX[encode] + propKey;
+            String keyEncode = htEncodeMap.get(key);
+            if (keyEncode == null || "".equals(keyEncode)) {
+                errMsg = "键值获取失败。" + key;
+                return errMsg;
+            }
+            String strInt = "";
+            Date now = new Date();
+            int itemCnt = tblScript.getItemCount();
+            if (pressKeyTime != null && itemCnt > 0) {
+                if (strFixedInt != null && !"".equals(strFixedInt)) {
+                    strInt = strFixedInt;
+                } else {
+                    strInt = String.format("%.1f",
+                            (now.getTime() - pressKeyTime.getTime()) / 1000.0);
+                }
+                TableItem lastTableItem = tblScript.getItem(itemCnt - 1);
+                int intervalColIndex = Resources.SCRIPT_COL_INTERVAL;// 时间间隔列
+                if (lastTableItem.getText(intervalColIndex) == null
+                        || "".equals(lastTableItem.getText(intervalColIndex))) {
+                    lastTableItem.setText(intervalColIndex, strInt);
+                }
+            }
+            pressKeyTime = now;
+            TableItem tableItem = new TableItem(tblScript, SWT.NONE);
+            tableItem.setText(
+                    new String[] { String.valueOf(itemCnt + 1), keyEncode, name, "", "", propKey });
             tblScript.setTopIndex(itemCnt + 1);
 
             // 同步执行按键操作
