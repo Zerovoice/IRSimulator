@@ -3,7 +3,6 @@ package com.hisense.autotest.automation;
 
 import org.apache.log4j.Logger;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -41,8 +40,6 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.hisense.autotest.chart.RealTimeChartMCPU;
-import com.hisense.autotest.chart.RealTimeChartMMem;
 import com.hisense.autotest.common.Resources;
 import com.hisense.autotest.serialport.DSerialPort;
 import com.hisense.autotest.util.GetIPOfTV;
@@ -60,9 +57,7 @@ public class PgMakeCase extends SmartAuto {
     private static TabFolder tabFolder;
 
     private static Group grpMaunal;
-    private static Group grpUserIR;
     private static Group grpMIR5651;
-    private static Group grpMIRWhale; // Kenneth
 //    private static Group grpMIRSX6; // Kenneth
     private static Group grpMFactory;
     public static Group grpMSetTool;
@@ -176,31 +171,8 @@ public class PgMakeCase extends SmartAuto {
     private Button btn_FacAv3;
     private Button btn_FacYPBPR;
     private Button btn_FacVga;
-
-    private Button btnNumSign;
-    private Button btnAst;
-    private Button btnZero;
-    private Button btnNine;
-    private Button btnEight;
-    private Button btnSeven;
-    private Button btnSix;
-    private Button btnFive;
-    private Button btnFour;
-    private Button btnThree;
-    private Button btnTwo;
-    private Button btnOne;
-    private Button btnReturn;
-    private Button btnHome;
-    private Button btnMenu;
-    private Button btnSet;
-    private Button btnVolAdd;
-    private Button btnVolSub;
-    private Button btnOk;
-    private Button btnMute;
-    private Button btnPower;
     private Button btn_saveSequence;
     private TableColumn tblclmn_name;
-    private TabItem tbtm_custom;
     private TabFolder tabFolder_select;
 
     /**
@@ -360,6 +332,7 @@ public class PgMakeCase extends SmartAuto {
                         lMDevComStatus, btnMDevConnCom, btnMDevDisConnCom, false);
                 if (connDevComSuccss) {
                     spDev.setDevPortParameters();// 设置设备串口参数
+                    startDTV();
                 }
             }
         });
@@ -499,7 +472,7 @@ public class PgMakeCase extends SmartAuto {
 
             }
         });
-        rdoMExecFixedInt.setText("\u4F7F\u7528\u56FA\u5B9A\u95F4\u9694(\u79D2)");
+        rdoMExecFixedInt.setText("使用固定间隔(秒)");
         rdoMExecFixedInt.setBounds(176, 23, 113, 17);
 
         txtMExecFixedInt = new Text(grpExecScript, SWT.BORDER);
@@ -522,7 +495,7 @@ public class PgMakeCase extends SmartAuto {
 
         chbMExecLoop = new Button(grpExecScript, SWT.CHECK);
         chbMExecLoop.setBounds(10, 51, 69, 17);
-        chbMExecLoop.setText("\u5FAA\u73AF\u6267\u884C");
+        chbMExecLoop.setText("循环执行");
 
         btnMExec = new Button(grpExecScript, SWT.NONE);
         btnMExec.addSelectionListener(new SelectionAdapter() {
@@ -533,7 +506,7 @@ public class PgMakeCase extends SmartAuto {
             }
         });
         btnMExec.setBounds(261, 46, 49, 27);
-        btnMExec.setText("\u6267\u884C");
+        btnMExec.setText("执行");
 
         btnMStopExec = new Button(grpExecScript, SWT.NONE);
         btnMStopExec.setEnabled(false);
@@ -544,7 +517,7 @@ public class PgMakeCase extends SmartAuto {
                 stopExec(Resources.MODE_MANUAL);
             }
         });
-        btnMStopExec.setText("\u505C\u6B62");
+        btnMStopExec.setText("停止");
         btnMStopExec.setBounds(316, 46, 49, 27);
 
         txtMLoop = new Text(grpExecScript, SWT.BORDER);
@@ -566,7 +539,7 @@ public class PgMakeCase extends SmartAuto {
 
         Label label_3 = new Label(grpExecScript, SWT.NONE);
         label_3.setBounds(120, 51, 88, 17);
-        label_3.setText("\u6B21  \u5FAA\u73AF\u95F4\u9694(\u79D2)");
+        label_3.setText("次  循环间隔(秒)");
 
         txtMUCInterval = new Text(grpExecScript, SWT.BORDER);
         txtMUCInterval.setText("1");
@@ -732,295 +705,6 @@ public class PgMakeCase extends SmartAuto {
             }
         });
 
-        TabItem tbtmIR = new TabItem(tabFolder_select, SWT.NONE);
-        tbtmIR.setText("用户遥控器");
-
-        grpUserIR = new Group(tabFolder_select, SWT.NONE);
-        tbtmIR.setControl(grpUserIR);
-
-        btnPower = new Button(grpUserIR, SWT.NONE);
-        btnPower.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_POWER, btnPower.getText(), false);
-            }
-        });
-        btnPower.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
-        btnPower.setBounds(33, 36, 80, 27);
-        btnPower.setText("电源");
-
-        btnMute = new Button(grpUserIR, SWT.NONE);
-        btnMute.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_MUTE, btnMute.getText(), false);
-            }
-        });
-        btnMute.setBounds(263, 36, 80, 27);
-        btnMute.setText("静音");
-
-        Button btnUp = new Button(grpUserIR, SWT.ARROW | SWT.UP);
-        btnUp.setText("上");
-        btnUp.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_UP, "上", false);
-            }
-        });
-        btnUp.setBounds(150, 146, 80, 27);
-
-        Button btnLeft = new Button(grpUserIR, SWT.ARROW | SWT.LEFT);
-        btnLeft.setText("左");
-        btnLeft.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_LEFT, "左", false);
-            }
-        });
-        btnLeft.setBounds(33, 190, 80, 27);
-
-        Button btnDown = new Button(grpUserIR, SWT.ARROW | SWT.DOWN);
-        btnDown.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_DOWN, "下", false);
-            }
-        });
-        btnDown.setText("下");
-        btnDown.setBounds(150, 233, 80, 27);
-
-        Button btnRight = new Button(grpUserIR, SWT.ARROW | SWT.RIGHT);
-        btnRight.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_RIGHT, "右", false);
-            }
-        });
-        btnRight.setBounds(263, 190, 80, 27);
-        btnRight.setText("右");
-
-        btnOk = new Button(grpUserIR, SWT.NONE);
-        btnOk.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_OK, btnOk.getText(), false);
-            }
-        });
-        btnOk.setBounds(150, 190, 80, 27);
-        btnOk.setText("OK");
-
-        btnVolSub = new Button(grpUserIR, SWT.NONE);
-        btnVolSub.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_VOL_SUB, btnVolSub.getText(), false);
-            }
-        });
-        btnVolSub.setBounds(33, 97, 80, 27);
-        btnVolSub.setText("音量-");
-
-        btnVolAdd = new Button(grpUserIR, SWT.NONE);
-        btnVolAdd.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_VOL_ADD, btnVolAdd.getText(), false);
-            }
-        });
-        btnVolAdd.setBounds(263, 97, 80, 27);
-        btnVolAdd.setText("音量+");
-
-        btnSet = new Button(grpUserIR, SWT.NONE);
-        btnSet.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_SET, btnSet.getText(), false);
-            }
-        });
-        btnSet.setBounds(150, 66, 80, 27);
-        btnSet.setText("设置");
-
-        btnMenu = new Button(grpUserIR, SWT.NONE);
-        btnMenu.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_MENU, btnMenu.getText(), false);
-            }
-        });
-        btnMenu.setBounds(33, 276, 80, 27);
-        btnMenu.setText("小聪");
-
-        btnHome = new Button(grpUserIR, SWT.NONE);
-        btnHome.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_HOME, btnHome.getText(), false);
-            }
-        });
-        btnHome.setBounds(150, 276, 80, 27);
-        btnHome.setText("主页");
-
-        btnReturn = new Button(grpUserIR, SWT.NONE);
-        btnReturn.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_RETURN, btnReturn.getText(), false);
-            }
-        });
-        btnReturn.setBounds(263, 276, 80, 27);
-        btnReturn.setText("返回");
-
-        btnOne = new Button(grpUserIR, SWT.NONE);
-        btnOne.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_ONE, btnOne.getText(), false);
-            }
-        });
-        btnOne.setBounds(33, 341, 80, 27);
-        btnOne.setText("1");
-
-        btnTwo = new Button(grpUserIR, SWT.NONE);
-        btnTwo.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_TWO, btnTwo.getText(), false);
-            }
-        });
-        btnTwo.setBounds(150, 341, 80, 27);
-        btnTwo.setText("2");
-
-        btnThree = new Button(grpUserIR, SWT.NONE);
-        btnThree.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_THREE, btnThree.getText(), false);
-            }
-        });
-        btnThree.setBounds(263, 341, 80, 27);
-        btnThree.setText("3");
-
-        btnFour = new Button(grpUserIR, SWT.NONE);
-        btnFour.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_FOUR, btnFour.getText(), false);
-            }
-        });
-        btnFour.setBounds(33, 381, 80, 27);
-        btnFour.setText("4");
-
-        btnFive = new Button(grpUserIR, SWT.NONE);
-        btnFive.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_FIVE, btnFive.getText(), false);
-            }
-        });
-        btnFive.setBounds(150, 381, 80, 27);
-        btnFive.setText("5");
-
-        btnSix = new Button(grpUserIR, SWT.NONE);
-        btnSix.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_SIX, btnSix.getText(), false);
-            }
-        });
-        btnSix.setBounds(263, 381, 80, 27);
-        btnSix.setText("6");
-
-        btnSeven = new Button(grpUserIR, SWT.NONE);
-        btnSeven.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_SEVEN, btnSeven.getText(), false);
-            }
-        });
-        btnSeven.setBounds(33, 423, 80, 27);
-        btnSeven.setText("7");
-
-        btnEight = new Button(grpUserIR, SWT.NONE);
-        btnEight.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_EIGHT, btnEight.getText(), false);
-            }
-        });
-        btnEight.setBounds(150, 423, 80, 27);
-        btnEight.setText("8");
-
-        btnNine = new Button(grpUserIR, SWT.NONE);
-        btnNine.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_NINE, btnNine.getText(), false);
-            }
-        });
-        btnNine.setBounds(263, 423, 80, 27);
-        btnNine.setText("9");
-
-        btnZero = new Button(grpUserIR, SWT.NONE);
-        btnZero.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_ZERO, btnZero.getText(), false);
-            }
-        });
-        btnZero.setBounds(150, 463, 80, 27);
-        btnZero.setText("0");
-
-        btnAst = new Button(grpUserIR, SWT.NONE);
-        btnAst.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_STAR, btnAst.getText(), false);
-            }
-        });
-        btnAst.setBounds(33, 463, 80, 27);
-        btnAst.setText("*");
-
-        btnNumSign = new Button(grpUserIR, SWT.NONE);
-        btnNumSign.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_POUND, btnNumSign.getText(), false);
-            }
-        });
-        btnNumSign.setBounds(263, 463, 80, 27);
-        btnNumSign.setText("#");
-
-        tbtm_custom = new TabItem(tabFolder_select, SWT.V_SCROLL);
-        tbtm_custom.setText("自定义遥控器");
-
-        Composite composite = new Composite(tabFolder_select, SWT.NONE);
-        tbtm_custom.setControl(composite);
-        new PgDefinedButtons(shell, SWT.NONE, composite);
-
         tabItem = new TabItem(tabFolder_select, SWT.NONE);
         tabItem.setText("\u5DE5\u5382\u9065\u63A7\u5668");
 
@@ -1039,7 +723,7 @@ public class PgMakeCase extends SmartAuto {
         });
 
         btn_FacSave = new Button(grpMFactory, SWT.NONE);
-        btn_FacSave.setText("\u8282\u80FD");
+        btn_FacSave.setText("节能");
         btn_FacSave.setBounds(101, 27, 80, 27);
         btn_FacSave.addSelectionListener(new SelectionAdapter() {
 
@@ -1050,7 +734,7 @@ public class PgMakeCase extends SmartAuto {
         });
 
         btn_FacPattern = new Button(grpMFactory, SWT.NONE);
-        btn_FacPattern.setText("\u5C4F\u68C0");
+        btn_FacPattern.setText("屏检");
         btn_FacPattern.setBounds(194, 27, 80, 27);
         btn_FacPattern.addSelectionListener(new SelectionAdapter() {
 
@@ -1061,7 +745,7 @@ public class PgMakeCase extends SmartAuto {
         });
 
         btn_FacAging = new Button(grpMFactory, SWT.NONE);
-        btn_FacAging.setText("\u8001\u5316");
+        btn_FacAging.setText("老化");
         btn_FacAging.setBounds(285, 27, 80, 27);
         btn_FacAging.addSelectionListener(new SelectionAdapter() {
 
@@ -1085,7 +769,7 @@ public class PgMakeCase extends SmartAuto {
         // 区分Android电视和linux电视 END
 
         btn_FacBalance = new Button(grpMFactory, SWT.NONE);
-        btn_FacBalance.setText("\u5E73\u8861");
+        btn_FacBalance.setText("平衡");
         btn_FacBalance.setBounds(10, 60, 80, 27);
         btn_FacBalance.addSelectionListener(new SelectionAdapter() {
 
@@ -1096,7 +780,7 @@ public class PgMakeCase extends SmartAuto {
         });
 
         btn_FacAdc = new Button(grpMFactory, SWT.NONE);
-        btn_FacAdc.setText("\u4F18\u5316");
+        btn_FacAdc.setText("优化");
         btn_FacAdc.setBounds(100, 60, 80, 27);
         btn_FacAdc.addSelectionListener(new SelectionAdapter() {
 
@@ -1261,7 +945,7 @@ public class PgMakeCase extends SmartAuto {
         });
         // 5651遥控器Kenneth
         TabItem tbtmIR5651 = new TabItem(tabFolder_select, SWT.NONE);
-        tbtmIR5651.setText("5651\u9065\u63A7\u5668");
+        tbtmIR5651.setText("5651遥控器");
 
         grpMIR5651 = new Group(tabFolder_select, SWT.NONE);
         tbtmIR5651.setControl(grpMIR5651);
@@ -1866,1267 +1550,6 @@ public class PgMakeCase extends SmartAuto {
                 recordKeyEnt(Resources.PROPKEY_SUBT, btn_subt.getText(), false);
             }
         });
-        // 新增选项卡，Whale TV遥控器Kenneth
-        TabItem tbtmIRWhale = new TabItem(tabFolder_select, SWT.NONE);
-        tbtmIRWhale.setText("Whale TV遥控器");
-
-        grpMIRWhale = new Group(tabFolder_select, SWT.NONE);
-        tbtmIRWhale.setControl(grpMIRWhale);
-        // Power
-        final Button btn_whale_power = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_power.setBounds(10, 15, 80, 27);
-        btn_whale_power.setText("电源");
-        btn_whale_power.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
-        btn_whale_power.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_POWER, btn_whale_power.getText(), false);
-            }
-        });
-        // HOME
-        final Button btn_whale_home = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_home.setText("HOME");
-        btn_whale_home.setBounds(147, 15, 80, 27);
-        btn_whale_home.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_HOME, btn_whale_home.getText(), false);
-            }
-        });
-        btn_whale_home.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
-        // MUTE
-        final Button btn_whale_mute = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_mute.setText("MUTE");
-        btn_whale_mute.setBounds(284, 15, 80, 27);
-        btn_whale_mute.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_MUTE", btn_whale_mute.getText(), false);
-            }
-        });
-        // 1
-        final Button btn_whale_1 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_1.setText("1");
-        btn_whale_1.setBounds(10, 48, 80, 27);
-        btn_whale_1.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_ONE, btn_whale_1.getText(), false);
-            }
-        });
-        // 2
-        final Button btn_whale_2 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_2.setText("2");
-        btn_whale_2.setBounds(101, 48, 80, 27);
-        btn_whale_2.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_TWO, btn_whale_2.getText(), false);
-            }
-        });
-        // 3
-        final Button btn_whale_3 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_3.setText("3");
-        btn_whale_3.setBounds(194, 48, 80, 27);
-        btn_whale_3.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_THREE, btn_whale_3.getText(), false);
-            }
-        });
-        // 4
-        final Button btn_whale_4 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_4.setText("4");
-        btn_whale_4.setBounds(284, 48, 80, 27);
-        btn_whale_4.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_FOUR, btn_whale_4.getText(), false);
-            }
-        });
-        // 5
-        final Button btn_whale_5 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_5.setText("5");
-        btn_whale_5.setBounds(10, 78, 80, 27);
-        btn_whale_5.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_FIVE, btn_whale_5.getText(), false);
-            }
-        });
-        // 6
-        final Button btn_whale_6 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_6.setText("6");
-        btn_whale_6.setBounds(101, 78, 80, 27);
-        btn_whale_6.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_SIX, btn_whale_6.getText(), false);
-            }
-        });
-        // 7
-        final Button btn_whale_7 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_7.setText("7");
-        btn_whale_7.setBounds(194, 78, 80, 27);
-        btn_whale_7.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_SEVEN, btn_whale_7.getText(), false);
-            }
-        });
-        // 8
-        final Button btn_whale_8 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_8.setText("8");
-        btn_whale_8.setBounds(284, 81, 80, 27);
-        btn_whale_8.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_EIGHT, btn_whale_8.getText(), false);
-            }
-        });
-        // 9
-        final Button btn_whale_9 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_9.setText("9");
-        btn_whale_9.setBounds(101, 111, 80, 27);
-        btn_whale_9.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_NINE, btn_whale_9.getText(), false);
-            }
-        });
-        // 0
-        final Button btn_whale_0 = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_0.setText("0");
-        btn_whale_0.setBounds(194, 111, 80, 27);
-        btn_whale_0.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_ZERO, btn_whale_0.getText(), false);
-            }
-        });
-        // PRE-CH
-        final Button btn_whale_prech = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_prech.setText("PRE-CH");
-        btn_whale_prech.setBounds(10, 111, 80, 27);
-        btn_whale_prech.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_PRE_CH, btn_whale_prech.getText(), false);
-            }
-        });
-        // INFO
-        final Button btn_whale_info = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_info.setText("INFO");
-        btn_whale_info.setBounds(284, 114, 80, 27);
-        btn_whale_info.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_INFO, btn_whale_info.getText(), false);
-            }
-        });
-        // Volume +
-        final Button btn_whale_volumeup = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_volumeup.setText("音量+");
-        btn_whale_volumeup.setBounds(10, 151, 80, 27);
-        btn_whale_volumeup.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_VOL_ADD, btn_whale_volumeup.getText(),
-                        false);
-            }
-        });
-        // volume -
-        final Button btn_whale_volumedown = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_volumedown.setText("音量-");
-        btn_whale_volumedown.setBounds(101, 151, 80, 27);
-        btn_whale_volumedown.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_VOL_SUB, btn_whale_volumedown.getText(),
-                        false);
-            }
-        });
-        // channel +
-        final Button btn_whale_chup = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_chup.setText("频道+");
-        btn_whale_chup.setBounds(194, 151, 80, 27);
-        btn_whale_chup.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_CH_UP", btn_whale_chup.getText(), false);
-            }
-        });
-        // channel -
-        final Button btn_whale_chdown = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_chdown.setText("频道-");
-        btn_whale_chdown.setBounds(284, 151, 80, 27);
-        btn_whale_chdown.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_CH_DOWN", btn_whale_chdown.getText(), false);
-            }
-        });
-        // Media
-        final Button btn_whale_media = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_media.setText("MEDIA");
-        btn_whale_media.setBounds(10, 190, 80, 27);
-        btn_whale_media.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_MEDIA, btn_whale_media.getText(), false);
-            }
-        });
-        // 3D
-        final Button btn_whale_3d = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_3d.setText("3D");
-        btn_whale_3d.setBounds(147, 190, 80, 27);
-        btn_whale_3d.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_3D", btn_whale_3d.getText(), false);
-            }
-        });
-        // PIP
-        final Button btn_whale_pip = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_pip.setText("PiP");
-        btn_whale_pip.setBounds(284, 190, 80, 27);
-        btn_whale_pip.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_PIP", btn_whale_pip.getText(), false);
-            }
-        });
-        // EPG
-        final Button btn_whale_epg = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_epg.setText("EPG");
-        btn_whale_epg.setBounds(10, 223, 80, 27);
-        btn_whale_epg.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_EPG", btn_whale_epg.getText(), false);
-            }
-        });
-        // LIVE TV
-        final Button btn_whale_livetv = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_livetv.setText("LIVETV");
-        btn_whale_livetv.setBounds(147, 223, 80, 27);
-        btn_whale_livetv.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_LIVETV", btn_whale_livetv.getText(), false);
-            }
-        });
-        // CH.LIST
-        final Button btn_whale_chlist = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_chlist.setText("CH.LIST");
-        btn_whale_chlist.setBounds(284, 223, 80, 27);
-        btn_whale_chlist.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_CH_LIST", btn_whale_chlist.getText(), false);
-            }
-        });
-
-        // Menu
-        final Button btn_whale_menu = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_menu.setText("MENU");
-        btn_whale_menu.setBounds(10, 256, 80, 27);
-        btn_whale_menu.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_MUTE, btn_whale_menu.getText(), false);
-            }
-        });
-        // up
-        final Button btn_whale_up = new Button(grpMIRWhale, SWT.ARROW | SWT.UP);
-        btn_whale_up.setText("上");
-        btn_whale_up.setBounds(147, 256, 80, 27);
-        btn_whale_up.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_UP, "上", false);
-            }
-        });
-
-        // Setting
-        final Button btn_whale_setting = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_setting.setText("设置");
-        btn_whale_setting.setBounds(284, 256, 80, 27);
-        btn_whale_setting.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_SETTING", btn_whale_setting.getText(), false);
-            }
-        });
-
-        // left
-        final Button btn_whale_left = new Button(grpMIRWhale, SWT.ARROW | SWT.LEFT);
-        btn_whale_left.setText("左");
-        btn_whale_left.setBounds(10, 289, 80, 27);
-        btn_whale_left.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_LEFT, "左", false);
-            }
-        });
-
-        // OK
-        final Button btn_whale_ok = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_ok.setText("OK");
-        btn_whale_ok.setBounds(147, 289, 80, 27);
-        btn_whale_ok.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_OK, btn_whale_ok.getText(), false);
-            }
-        });
-
-        // right
-        final Button btn_whale_right = new Button(grpMIRWhale, SWT.ARROW | SWT.RIGHT);
-        btn_whale_right.setText("右");
-        btn_whale_right.setBounds(284, 289, 80, 27);
-        btn_whale_right.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_RIGHT, "右", false);
-            }
-        });
-        // return
-        btn_return = new Button(grpMIRWhale, SWT.NONE);
-        btn_return.setText("RETURN");
-        btn_return.setBounds(10, 322, 80, 27);
-        btn_return.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_RETURN, btn_return.getText(), false);
-            }
-        });
-        // down
-        btn_down = new Button(grpMIRWhale, SWT.ARROW | SWT.DOWN);
-        btn_down.setText("下");
-        btn_down.setBounds(147, 322, 80, 27);
-        btn_down.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_DOWN, "下", false);
-            }
-        });
-        // exit
-        btn_exit = new Button(grpMIRWhale, SWT.NONE);
-        btn_exit.setText("EXIT");
-        btn_exit.setBounds(284, 322, 80, 27);
-        btn_exit.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_EXIT, btn_exit.getText(), false);
-            }
-        });
-
-        // red
-        final Button btn_whale_red = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_red.setText("RED");
-        btn_whale_red.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
-        btn_whale_red.setBounds(10, 355, 80, 27);
-        btn_whale_red.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_RED", btn_whale_red.getText(), false);
-            }
-        });
-        // green
-        final Button btn_whale_green = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_green.setText("GREEN");
-        btn_whale_green.setBackground(SWTResourceManager.getColor(SWT.COLOR_GREEN));
-        btn_whale_green.setBounds(101, 355, 80, 27);
-        btn_whale_green.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_GREEN", btn_whale_green.getText(), false);
-            }
-        });
-        // yellow
-        final Button btn_whale_yellow = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_yellow.setText("YELLOW");
-        btn_whale_yellow.setBackground(SWTResourceManager.getColor(SWT.COLOR_YELLOW));
-        btn_whale_yellow.setBounds(194, 355, 80, 27);
-        btn_whale_yellow.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_YELLOW", btn_whale_yellow.getText(), false);
-            }
-        });
-        // blue
-        final Button btn_whale_blue = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_blue.setText("BLUE");
-        btn_whale_blue.setBackground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
-        btn_whale_blue.setBounds(284, 355, 80, 27);
-        btn_whale_blue.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_BLUE", btn_whale_blue.getText(), false);
-            }
-        });
-        // 播放
-        final Button btn_whale_play = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_play.setText("播放");
-        btn_whale_play.setBounds(10, 388, 80, 27);
-        btn_whale_play.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_PLAY, btn_whale_play.getText(), false);
-            }
-        });
-        // 暂停
-        final Button btn_whale_pause = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_pause.setText("暂停");
-        btn_whale_pause.setBounds(101, 388, 80, 27);
-        btn_whale_pause.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_PAUSE, btn_whale_pause.getText(), false);
-            }
-        });
-        // 停止
-        final Button btn_whale_stop = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_stop.setText("停止");
-        btn_whale_stop.setBounds(194, 388, 80, 27);
-        btn_whale_stop.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_STOP, btn_whale_stop.getText(), false);
-            }
-        });
-        // PVR
-        final Button btn_whale_pvr = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_pvr.setText("PVR");
-        btn_whale_pvr.setBounds(284, 388, 80, 27);
-        btn_whale_pvr.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_PVR, btn_whale_pvr.getText(), false);
-            }
-        });
-        // 开始
-        final Button btn_whale_start = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_start.setText("LAST");
-        btn_whale_start.setBounds(10, 420, 80, 27);
-        btn_whale_start.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_LAST", btn_whale_start.getText(), false);
-            }
-        });
-        // 快退
-        final Button btn_whale_FAST_BACKWARD = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_FAST_BACKWARD.setText("快退");
-        btn_whale_FAST_BACKWARD.setBounds(101, 420, 80, 27);
-        btn_whale_FAST_BACKWARD.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_FAST_BACKWARD", btn_whale_FAST_BACKWARD.getText(), false);
-            }
-        });
-        // 快进
-        final Button btn_whale_fast_forward = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_fast_forward.setText("快进");
-        btn_whale_fast_forward.setBounds(194, 421, 80, 27);
-        btn_whale_fast_forward.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_FAST_FORWARD,
-                        btn_whale_fast_forward.getText(), false);
-            }
-        });
-
-        // 末尾
-        final Button btn_whale_ending = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_ending.setText("NEXT");
-        btn_whale_ending.setBounds(284, 421, 80, 27);
-        btn_whale_ending.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_NEXT", btn_whale_ending.getText(), false);
-            }
-        });
-        // TEXT
-        final Button btn_whale_text = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_text.setText("TEXT");
-        btn_whale_text.setBounds(10, 453, 80, 27);
-        btn_whale_text.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_TEXT, btn_whale_text.getText(), false);
-            }
-        });
-        // STILL
-        final Button btn_whale_still = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_still.setText("STILL");
-        btn_whale_still.setBounds(101, 453, 80, 27);
-        btn_whale_still.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_STILL, btn_whale_still.getText(), false);
-            }
-        });
-        // SIZE
-        final Button btn_whale_size = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_size.setText("SIZE");
-        btn_whale_size.setBounds(194, 453, 80, 27);
-        btn_whale_size.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_SIZE, btn_whale_size.getText(), false);
-            }
-        });
-        // T.SHIFT
-        final Button btn_whale_tshift = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_tshift.setText("T.SHIFT");
-        btn_whale_tshift.setBounds(284, 453, 80, 27);
-        btn_whale_tshift.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_T_SHIFT, btn_whale_tshift.getText(),
-                        false);
-            }
-        });
-        // P.MODE
-        final Button btn_whale_pmode = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_pmode.setText("P.MODE");
-        btn_whale_pmode.setBounds(10, 484, 80, 27);
-        btn_whale_pmode.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_P_MODE, btn_whale_pmode.getText(), false);
-            }
-        });
-        // S.MODE
-        final Button btn_whale_smode = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_smode.setText("S.MODE");
-        btn_whale_smode.setBounds(101, 484, 80, 27);
-        btn_whale_smode.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_S_MODE, btn_whale_smode.getText(), false);
-            }
-        });
-        // LANGUAGE
-        final Button btn_whale_lang = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_lang.setText("LANGUAGE");
-        btn_whale_lang.setBounds(194, 486, 80, 27);
-        btn_whale_lang.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_LANGUAGE, btn_whale_lang.getText(),
-                        false);
-            }
-        });
-        // SUBT.
-        final Button btn_whale_subt = new Button(grpMIRWhale, SWT.NONE);
-        btn_whale_subt.setText("SUBT.");
-        btn_whale_subt.setBounds(284, 486, 80, 27);
-        btn_whale_subt.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt("WHALE_" + Resources.PROPKEY_SUBT, btn_whale_subt.getText(), false);
-            }
-        });
-//        SX6 UHD北美项目机型取消，界面上取消遥控器界面
-//        // 新增选项卡，SigmaSX6 UHD遥控器Kenneth //SX6 遥控器编码有些问题，暂时在界面去掉
-//
-//        TabItem tbtmIRSX6 = new TabItem(tabFolder_select, SWT.NONE);
-//        tbtmIRSX6.setText("SX6 UHD遥控器");
-//
-//        grpMIRSX6 = new Group(tabFolder_select, SWT.NONE);
-//        tbtmIRSX6.setControl(grpMIRSX6);
-//        // Power
-//        final Button btn_sx6_power = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_power.setBounds(10, 15, 80, 27);
-//        btn_sx6_power.setText("电源");
-//        btn_sx6_power.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
-//        btn_sx6_power.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_POWER,
-//                        btn_sx6_power.getText(), false);
-//            }
-//        });
-//        // NETFLIX
-//        final Button btn_sx6_netflix = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_netflix.setText("NETFLIX");
-//        btn_sx6_netflix.setBounds(147, 15, 80, 27);
-//        btn_sx6_netflix.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_NETFLIX", btn_sx6_netflix.getText(), false);
-//            }
-//        });
-//        btn_sx6_netflix.setBackground(SWTResourceManager
-//                .getColor(SWT.COLOR_RED));
-//        // INPUT
-//        final Button btn_sx6_input = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_input.setText("INPUTE");
-//        btn_sx6_input.setBounds(284, 15, 80, 27);
-//        btn_sx6_input.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_INPUT", btn_sx6_input.getText(), false);
-//            }
-//        });
-//        // 1
-//        final Button btn_sx6_1 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_1.setText("1");
-//        btn_sx6_1.setBounds(10, 48, 80, 27);
-//        btn_sx6_1.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_ONE,
-//                        btn_sx6_1.getText(), false);
-//            }
-//        });
-//        // 2
-//        final Button btn_sx6_2 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_2.setText("2");
-//        btn_sx6_2.setBounds(101, 48, 80, 27);
-//        btn_sx6_2.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_TWO,
-//                        btn_sx6_2.getText(), false);
-//            }
-//        });
-//        // 3
-//        final Button btn_sx6_3 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_3.setText("3");
-//        btn_sx6_3.setBounds(194, 48, 80, 27);
-//        btn_sx6_3.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_THREE,
-//                        btn_sx6_3.getText(), false);
-//            }
-//        });
-//        // 4
-//        final Button btn_sx6_4 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_4.setText("4");
-//        btn_sx6_4.setBounds(284, 48, 80, 27);
-//        btn_sx6_4.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_FOUR,
-//                        btn_sx6_4.getText(), false);
-//            }
-//        });
-//        // 5
-//        final Button btn_sx6_5 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_5.setText("5");
-//        btn_sx6_5.setBounds(10, 78, 80, 27);
-//        btn_sx6_5.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_FIVE,
-//                        btn_sx6_5.getText(), false);
-//            }
-//        });
-//        // 6
-//        final Button btn_sx6_6 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_6.setText("6");
-//        btn_sx6_6.setBounds(101, 78, 80, 27);
-//        btn_sx6_6.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_SIX,
-//                        btn_sx6_6.getText(), false);
-//            }
-//        });
-//        // 7
-//        final Button btn_sx6_7 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_7.setText("7");
-//        btn_sx6_7.setBounds(194, 78, 80, 27);
-//        btn_sx6_7.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_SEVEN,
-//                        btn_sx6_7.getText(), false);
-//            }
-//        });
-//        // 8
-//        final Button btn_sx6_8 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_8.setText("8");
-//        btn_sx6_8.setBounds(284, 81, 80, 27);
-//        btn_sx6_8.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_EIGHT,
-//                        btn_sx6_8.getText(), false);
-//            }
-//        });
-//        // 9
-//        final Button btn_sx6_9 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_9.setText("9");
-//        btn_sx6_9.setBounds(101, 111, 80, 27);
-//        btn_sx6_9.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_NINE,
-//                        btn_sx6_9.getText(), false);
-//            }
-//        });
-//        // 0
-//        final Button btn_sx6_0 = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_0.setText("0");
-//        btn_sx6_0.setBounds(194, 111, 80, 27);
-//        btn_sx6_0.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_ZERO,
-//                        btn_sx6_0.getText(), false);
-//            }
-//        });
-//        // 横线
-//        final Button btn_sx6_hline = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_hline.setText("一");
-//        btn_sx6_hline.setBounds(10, 111, 80, 27);
-//        btn_sx6_hline.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_HorizontalLine", btn_sx6_hline.getText(),
-//                        false);
-//            }
-//        });
-//        // LAST
-//        final Button btn_sx6_last = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_last.setText("LAST");
-//        btn_sx6_last.setBounds(284, 114, 80, 27);
-//        btn_sx6_last.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_LAST", btn_sx6_last.getText(), false);
-//            }
-//        });
-//        // Volume +
-//        final Button btn_sx6_volumeup = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_volumeup.setText("音量+");
-//        btn_sx6_volumeup.setBounds(10, 151, 80, 27);
-//        btn_sx6_volumeup.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_VOL_ADD,
-//                        btn_sx6_volumeup.getText(), false);
-//            }
-//        });
-//        // volume -
-//        final Button btn_sx6_volumedown = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_volumedown.setText("音量-");
-//        btn_sx6_volumedown.setBounds(101, 151, 80, 27);
-//        btn_sx6_volumedown.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_VOL_SUB,
-//                        btn_sx6_volumedown.getText(), false);
-//            }
-//        });
-//        // channel +
-//        final Button btn_sx6_chup = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_chup.setText("频道+");
-//        btn_sx6_chup.setBounds(194, 151, 80, 27);
-//        btn_sx6_chup.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_CH_UP", btn_sx6_chup.getText(), false);
-//            }
-//        });
-//        // channel -
-//        final Button btn_sx6_chdown = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_chdown.setText("频道-");
-//        btn_sx6_chdown.setBounds(284, 151, 80, 27);
-//        btn_sx6_chdown.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_CH_DOWN", btn_sx6_chdown.getText(), false);
-//            }
-//        });
-//        // MUTE
-//        final Button btn_sx6_mute = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_mute.setText("MUTE");
-//        btn_sx6_mute.setBounds(10, 190, 80, 27);
-//        btn_sx6_mute.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_MUTE", btn_sx6_mute.getText(), false);
-//            }
-//        });
-//        // MEDIA
-//        final Button btn_sx6_MEDIA = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_MEDIA.setText("MEDIA");
-//        btn_sx6_MEDIA.setBounds(147, 190, 80, 27);
-//        btn_sx6_MEDIA.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_MEDIA", btn_sx6_MEDIA.getText(), false);
-//            }
-//        });
-//        // TV
-//        final Button btn_sx6_TV = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_TV.setText("TV");
-//        btn_sx6_TV.setBounds(284, 190, 80, 27);
-//        btn_sx6_TV.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_TV", btn_sx6_TV.getText(), false);
-//            }
-//        });
-//        // VUDU
-//        final Button btn_sx6_VUDU = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_VUDU.setText("VUDU");
-//        btn_sx6_VUDU.setBounds(10, 223, 80, 27);
-//        btn_sx6_VUDU.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_VUDU", btn_sx6_VUDU.getText(), false);
-//            }
-//        });
-//        // AMAZON
-//        final Button btn_sx6_amazon = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_amazon.setText("AMAZON");
-//        btn_sx6_amazon.setBounds(147, 223, 80, 27);
-//        btn_sx6_amazon.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_AMAZON", btn_sx6_amazon.getText(), false);
-//            }
-//        });
-//        // YOUTUBE
-//        final Button btn_sx6_YOUTUBE = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_YOUTUBE.setText("YOUTUBE");
-//        btn_sx6_YOUTUBE.setBounds(284, 223, 80, 27);
-//        btn_sx6_YOUTUBE.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_YOUTUBE", btn_sx6_YOUTUBE.getText(), false);
-//            }
-//        });
-//
-//        // Menu
-//        final Button btn_sx6_menu = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_menu.setText("MENU");
-//        btn_sx6_menu.setBounds(10, 256, 80, 27);
-//        btn_sx6_menu.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_MENU", btn_sx6_menu.getText(), false);
-//            }
-//        });
-//        // up
-//        final Button btn_sx6_up = new Button(grpMIRSX6, SWT.ARROW | SWT.UP);
-//        btn_sx6_up.setText("上");
-//        btn_sx6_up.setBounds(147, 256, 80, 27);
-//        btn_sx6_up.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_UP, "上", false);
-//            }
-//        });
-//
-//        // HOME
-//        final Button btn_sx6_HOME = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_HOME.setText("HOME");
-//        btn_sx6_HOME.setBounds(284, 256, 80, 27);
-//        btn_sx6_HOME.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_HOME", btn_sx6_HOME.getText(), false);
-//            }
-//        });
-//
-//        // left
-//        final Button btn_sx6_left = new Button(grpMIRSX6, SWT.ARROW | SWT.LEFT);
-//        btn_sx6_left.setText("左");
-//        btn_sx6_left.setBounds(10, 289, 80, 27);
-//        btn_sx6_left.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_LEFT, "左", false);
-//            }
-//        });
-//
-//        // ENTER
-//        final Button btn_sx6_ENTER = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_ENTER.setText("ENTER");
-//        btn_sx6_ENTER.setBounds(147, 289, 80, 27);
-//        btn_sx6_ENTER.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_ENTER", btn_sx6_ENTER.getText(), false);
-//            }
-//        });
-//
-//        // right
-//        final Button btn_sx6_right = new Button(grpMIRSX6, SWT.ARROW
-//                | SWT.RIGHT);
-//        btn_sx6_right.setText("右");
-//        btn_sx6_right.setBounds(284, 289, 80, 27);
-//        btn_sx6_right.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_RIGHT, "右", false);
-//            }
-//        });
-//        // return
-//        btn_return = new Button(grpMIRSX6, SWT.NONE);
-//        btn_return.setText("RETURN");
-//        btn_return.setBounds(10, 322, 80, 27);
-//        btn_return.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_RETURN,
-//                        btn_return.getText(), false);
-//            }
-//        });
-//        // down
-//        btn_down = new Button(grpMIRSX6, SWT.ARROW | SWT.DOWN);
-//        btn_down.setText("下");
-//        btn_down.setBounds(147, 322, 80, 27);
-//        btn_down.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_DOWN, "下", false);
-//            }
-//        });
-//        // exit
-//        btn_exit = new Button(grpMIRSX6, SWT.NONE);
-//        btn_exit.setText("EXIT");
-//        btn_exit.setBounds(284, 322, 80, 27);
-//        btn_exit.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_EXIT,
-//                        btn_exit.getText(), false);
-//            }
-//        });
-//
-//        // red
-//        final Button btn_sx6_red = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_red.setText("RED");
-//        btn_sx6_red.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
-//        btn_sx6_red.setBounds(10, 355, 80, 27);
-//        btn_sx6_red.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_RED", btn_sx6_red.getText(), false);
-//            }
-//        });
-//        // green
-//        final Button btn_sx6_green = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_green.setText("GREEN");
-//        btn_sx6_green.setBackground(SWTResourceManager
-//                .getColor(SWT.COLOR_GREEN));
-//        btn_sx6_green.setBounds(101, 355, 80, 27);
-//        btn_sx6_green.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_GREEN", btn_sx6_green.getText(), false);
-//            }
-//        });
-//        // yellow
-//        final Button btn_sx6_yellow = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_yellow.setText("YELLOW");
-//        btn_sx6_yellow.setBackground(SWTResourceManager
-//                .getColor(SWT.COLOR_YELLOW));
-//        btn_sx6_yellow.setBounds(194, 355, 80, 27);
-//        btn_sx6_yellow.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_YELLOW", btn_sx6_yellow.getText(), false);
-//            }
-//        });
-//        // blue
-//        final Button btn_sx6_blue = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_blue.setText("BLUE");
-//        btn_sx6_blue.setBackground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
-//        btn_sx6_blue.setBounds(284, 355, 80, 27);
-//        btn_sx6_blue.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_BLUE", btn_sx6_blue.getText(), false);
-//            }
-//        });
-//        // 快退
-//        final Button btn_sx6_FAST_BACKWARD = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_FAST_BACKWARD.setText("快退");
-//        btn_sx6_FAST_BACKWARD.setBounds(10, 388, 80, 27);
-//        btn_sx6_FAST_BACKWARD.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_FAST_BACKWARD",
-//                        btn_sx6_FAST_BACKWARD.getText(), false);
-//            }
-//        });
-//        // 快进
-//        final Button btn_sx6_fast_forward = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_fast_forward.setText("快进");
-//        btn_sx6_fast_forward.setBounds(101, 388, 80, 27);
-//        btn_sx6_fast_forward.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_FAST_FORWARD,
-//                        btn_sx6_fast_forward.getText(), false);
-//            }
-//        });
-//
-//        // 开始
-//        final Button btn_sx6_start = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_start.setText("开始");
-//        btn_sx6_start.setBounds(194, 388, 80, 27);
-//        btn_sx6_start.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_START,
-//                        btn_sx6_start.getText(), false);
-//            }
-//        });
-//
-//        // 末尾
-//        final Button btn_sx6_ending = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_ending.setText("末尾");
-//        btn_sx6_ending.setBounds(284, 388, 80, 27);
-//        btn_sx6_ending.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_ENDING,
-//                        btn_sx6_ending.getText(), false);
-//            }
-//        });
-//        // 播放
-//        final Button btn_sx6_play = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_play.setText("播放");
-//        btn_sx6_play.setBounds(10, 420, 80, 27);
-//        btn_sx6_play.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_PLAY,
-//                        btn_sx6_play.getText(), false);
-//            }
-//        });
-//        // 暂停
-//        final Button btn_sx6_pause = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_pause.setText("暂停");
-//        btn_sx6_pause.setBounds(101, 420, 80, 27);
-//        btn_sx6_pause.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_PAUSE,
-//                        btn_sx6_pause.getText(), false);
-//            }
-//        });
-//        // 停止
-//        final Button btn_sx6_stop = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_stop.setText("停止");
-//        btn_sx6_stop.setBounds(194, 420, 80, 27);
-//        btn_sx6_stop.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_" + Resources.PROPKEY_STOP,
-//                        btn_sx6_stop.getText(), false);
-//            }
-//        });
-//        // ASPECT
-//        final Button btn_sx6_pvr = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_pvr.setText("ASPECT");
-//        btn_sx6_pvr.setBounds(284, 420, 80, 27);
-//        btn_sx6_pvr.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_ASPECT", btn_sx6_pvr.getText(), false);
-//            }
-//        });
-//        // PICTURE
-//        final Button btn_sx6_picture = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_picture.setText("PICTURE");
-//        btn_sx6_picture.setBounds(10, 453, 80, 27);
-//        btn_sx6_picture.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_PICTURE", btn_sx6_picture.getText(), false);
-//            }
-//        });
-//        // SOUND
-//        final Button btn_sx6_sound = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_sound.setText("SOUND");
-//        btn_sx6_sound.setBounds(101, 453, 80, 27);
-//        btn_sx6_sound.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_SOUND", btn_sx6_sound.getText(), false);
-//            }
-//        });
-//        // MTS/SAP
-//        final Button btn_sx6_MTSSAP = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_MTSSAP.setText("MTS/SAP");
-//        btn_sx6_MTSSAP.setBounds(194, 453, 80, 27);
-//        btn_sx6_MTSSAP.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_MTS/SAP", btn_sx6_MTSSAP.getText(), false);
-//            }
-//        });
-//        // CC
-//        final Button btn_sx6_cc = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_cc.setText("CC");
-//        btn_sx6_cc.setBounds(284, 453, 80, 27);
-//        btn_sx6_cc.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_CC", btn_sx6_cc.getText(), false);
-//            }
-//        });
-//        // SLEEP
-//        final Button btn_sx6_sleep = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_sleep.setText("SLEEP");
-//        btn_sx6_sleep.setBounds(10, 484, 80, 27);
-//        btn_sx6_sleep.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_SLEEP", btn_sx6_sleep.getText(), false);
-//            }
-//        });
-//        // DISPLAY
-//        final Button btn_sx6_display = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_display.setText("DISPLAY");
-//        btn_sx6_display.setBounds(101, 484, 80, 27);
-//        btn_sx6_display.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_DISPLAY", btn_sx6_display.getText(), false);
-//            }
-//        });
-//        // AV
-//        final Button btn_sx6_av = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_av.setText("AV");
-//        btn_sx6_av.setBounds(194, 486, 80, 27);
-//        btn_sx6_av.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_AV", btn_sx6_av.getText(), false);
-//            }
-//        });
-//        // HDMI
-//        final Button btn_sx6_hdmi = new Button(grpMIRSX6, SWT.NONE);
-//        btn_sx6_hdmi.setText("HDMI");
-//        btn_sx6_hdmi.setBounds(284, 486, 80, 27);
-//        btn_sx6_hdmi.addSelectionListener(new SelectionAdapter() {
-//
-//            @Override
-//            public void widgetSelected(SelectionEvent e) {
-//                recordKeyEnt("SX6_HDMI", btn_sx6_hdmi.getText(), false);
-//            }
-//        });
 
         // 资源监控Kenneth
         TabItem tbtmMResrc = new TabItem(tabFolder_select, SWT.NONE);
@@ -3232,28 +1655,24 @@ public class PgMakeCase extends SmartAuto {
      * 录制回放模式 执行按钮操作
      */
     public static void doMExecScript() {
-//        if (btn_receiver.getSelection() && "停止录制".equals(btn_receiveRecord.getText())) {
-//            showMsg(shell, "录制脚本还未停止，请先停止录制。", SWT.ICON_INFORMATION);
-//            return;
-//        }
-//        if (!toolCheck(comboMDevices)) {
-//            return;
-//        }
+        if (!toolCheck(null)) {
+            return;
+        }
         if (tblMScript.getItemCount() == 0) {
             showMsg(shell, "脚本内容为空，请先录制脚本。", SWT.ICON_INFORMATION);
             return;
         }
         // 资源监控
-        if (rtcMCPU == null) {
-            fMCPU = SWT_AWT.new_Frame(compMCPU);
-            rtcMCPU = new RealTimeChartMCPU(null, 600000D);
-            fMCPU.add(rtcMCPU);
-        }
-        if (rtcMMem == null) {
-            fMMem = SWT_AWT.new_Frame(compMMem);
-            rtcMMem = new RealTimeChartMMem(null, 600000D);
-            fMMem.add(rtcMMem);
-        }
+//        if (rtcMCPU == null) {
+//            fMCPU = SWT_AWT.new_Frame(compMCPU);
+//            rtcMCPU = new RealTimeChartMCPU(null, 600000D);
+//            fMCPU.add(rtcMCPU);
+//        }
+//        if (rtcMMem == null) {
+//            fMMem = SWT_AWT.new_Frame(compMMem);
+//            rtcMMem = new RealTimeChartMMem(null, 600000D);
+//            fMMem.add(rtcMMem);
+//        }
         try {
             if (rdoMExecFixedInt.getSelection()) {
                 txtMExecFixedInt.setText(
@@ -3264,8 +1683,8 @@ public class PgMakeCase extends SmartAuto {
             }
             logger.debug("testRstTimePath = " + testRstTimePath);
             logger.debug("logFilePath = " + logFilePath);
-//            execMScript(tblMScript, chbMExecLoop, txtMLoop, rdoMExecFixedInt, txtMExecFixedInt,
-//                    comboMDevices.getText(), Integer.parseInt(txtMUCInterval.getText()));
+            execMScript(tblMScript, chbMExecLoop, txtMLoop, rdoMExecFixedInt, txtMExecFixedInt, "",
+                    Integer.parseInt(txtMUCInterval.getText()));
         } catch (Exception e1) {
             logger.error(e1.getMessage(), e1);
             showMsg(shell, e1.getMessage(), SWT.ICON_ERROR);
@@ -3277,53 +1696,53 @@ public class PgMakeCase extends SmartAuto {
      */
     private static boolean toolCheck(Combo comboDevices) {
 
-        for (TableItem ti : tblMScript.getItems()) {
-            if (!ti.getText(Resources.SCRIPT_COL_KEY).contains("-")) {
-                if ("".equals(comboDevices.getText())) {
-                    if (isLinuxTV) {// Kenneth
-                        if (!connDevComSuccss) {
-                            String strMsg = "用例中有Whale KeyCode，请先连接电视串口。";
-                            logger.error(strMsg);
-                            showMsg(shell, strMsg, SWT.ICON_INFORMATION);
-                            return false;
-                        }
-                    } else {
-                        String strMsg = "用例中有keycode按键，请先选择电视IP。";
-                        logger.error(strMsg);
-                        showMsg(shell, strMsg, SWT.ICON_INFORMATION);
-                        return false;
-                    }
-                }
-            } else {
-                if (!connIRComSuccss) {
-                    String strMsg = "用例中有红外按键，请先连接遥控器串口。";
-                    logger.error(strMsg);
-                    showMsg(shell, strMsg, SWT.ICON_INFORMATION);
-                    return false;
-                }
-            }
-        }
-        String deviceIp = comboDevices.getText();
-        if (connDevComSuccss) {
-            logger.debug("使用电视串口记录电视logcat信息。");
-        } else if (!"".equals(deviceIp)) {
-            logger.debug("使用adb logcat命令记录电视logcat信息。");
-        } else {
-            String strMsg = "未连接电视的串口并且没有选择电视IP，不能执行如下操作。是否继续执行？\n1、不能记录log信息\n2、不能进行log验证";
-            boolean gotoExec = showSelMsg(shell, strMsg, SWT.ICON_INFORMATION);
-            if (!gotoExec) {
-                return false;
-            }
-            logger.debug(strMsg);
-        }
-        if ("".equals(deviceIp) && !isLinuxTV) {// whale等linux电视不验证
-            String strMsg = "没有选择电视IP，不能执行如下操作。是否继续执行？\n1、不能进行资源监控\n2、不能执行脚本STEP中的log验证\n3、不能执行脚本STEP中的sqlite验证\n4、不能执行脚本STEP中的截图验证";
+//        for (TableItem ti : tblMScript.getItems()) {
+//            if (!ti.getText(Resources.SCRIPT_COL_KEY).contains("-")) {
+//                if ("".equals(comboDevices.getText())) {
+//                    if (isLinuxTV) {// Kenneth
+//                        if (!connDevComSuccss) {
+//                            String strMsg = "用例中有Whale KeyCode，请先连接电视串口。";
+//                            logger.error(strMsg);
+//                            showMsg(shell, strMsg, SWT.ICON_INFORMATION);
+//                            return false;
+//                        }
+//                    } else {
+//                        String strMsg = "用例中有keycode按键，请先选择电视IP。";
+//                        logger.error(strMsg);
+//                        showMsg(shell, strMsg, SWT.ICON_INFORMATION);
+//                        return false;
+//                    }
+//                }
+//            } else {
+//                if (!connIRComSuccss) {
+//                    String strMsg = "用例中有红外按键，请先连接遥控器串口。";
+//                    logger.error(strMsg);
+//                    showMsg(shell, strMsg, SWT.ICON_INFORMATION);
+//                    return false;
+//                }
+//            }
+//        }
+//        String deviceIp = comboDevices.getText();
+//        if (connDevComSuccss) {
+//            logger.debug("使用电视串口记录电视logcat信息。");
+//        } else if (!"".equals(deviceIp)) {
+//            logger.debug("使用adb logcat命令记录电视logcat信息。");
+//        } else {
+//            String strMsg = "未连接电视的串口并且没有选择电视IP，不能执行如下操作。是否继续执行？\n1、不能记录log信息\n2、不能进行log验证";
 //            boolean gotoExec = showSelMsg(shell, strMsg, SWT.ICON_INFORMATION);
 //            if (!gotoExec) {
 //                return false;
 //            }
-            logger.debug(strMsg);
-        }
+//            logger.debug(strMsg);
+//        }
+//        if ("".equals(deviceIp) && !isLinuxTV) {// whale等linux电视不验证
+//            String strMsg = "没有选择电视IP，不能执行如下操作。是否继续执行？\n1、不能进行资源监控\n2、不能执行脚本STEP中的log验证\n3、不能执行脚本STEP中的sqlite验证\n4、不能执行脚本STEP中的截图验证";
+////            boolean gotoExec = showSelMsg(shell, strMsg, SWT.ICON_INFORMATION);
+////            if (!gotoExec) {
+////                return false;
+////            }
+//            logger.debug(strMsg);
+//        }
         testRstTimePath = testRstsPath + utils.getCurrTime(Resources.FORMAT_TIME_PATH)
                 + File.separator;
         logFilePath = testRstTimePath + "logcat" + File.separator + "log_"
@@ -3344,18 +1763,8 @@ public class PgMakeCase extends SmartAuto {
                 strFixedInt = String.format("%.1f", Float.parseFloat(strFixedInt));
                 txtFixedInt.setText(strFixedInt);
             }
-            int encode = 0;
-            if (rdoMEncodeNEC.getSelection()) {
-                encode = Resources.ENCODE_NEC;
-            } else if (rdoMEncodeRC5.getSelection()) {
-                encode = Resources.ENCODE_RC5;
-            } else if (rdoMKeycode.getSelection()) {
-                encode = Resources.ENCODE_KEYCODE;
-            }
-//            String strMsg = recordKeyEvent(tblMScript, "", strFixedInt, encode, propKey, name);
             // zxb mode
-            String strMsg = recordAndExcuKeyEvent(tblMScript, "", strFixedInt, encode, propKey,
-                    name);
+            String strMsg = recordAndExcuKeyEvent(tblMScript, "", strFixedInt, 5, propKey, name);
             if (strMsg != null && !"".equals(strMsg)) {
                 showMsg(shell, strMsg, SWT.ICON_ERROR);
             }
@@ -3423,7 +1832,7 @@ public class PgMakeCase extends SmartAuto {
                     // 执行脚本时，[停止]按钮可用，其他控件不可用
                     grpMSetTool.setEnabled(false);
                     grpRecordScript.setEnabled(false);
-                    grpUserIR.setEnabled(false);
+//                    grpUserIR.setEnabled(false);
                     grpMIR5651.setEnabled(false);
                     grpMFactory.setEnabled(false);
 
@@ -3449,7 +1858,7 @@ public class PgMakeCase extends SmartAuto {
                 @Override
                 public void run() {
                     // 停止执行时，[停止]按钮不可用，还原其他控件的状态
-                    grpUserIR.setEnabled(true);
+//                    grpUserIR.setEnabled(true);
                     grpMSetTool.setEnabled(true);
                     grpRecordScript.setEnabled(true);
                     grpMIR5651.setEnabled(true);

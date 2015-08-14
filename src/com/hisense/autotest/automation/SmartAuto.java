@@ -78,6 +78,7 @@ public class SmartAuto {
     protected static Element settings = null;
     protected static Hashtable<String, String> htEncodeMap = new Hashtable<String, String>();
     protected static Hashtable<String, String> htSyscodeMap = new Hashtable<String, String>();
+    protected static Hashtable<String, String> mMTKcodeMap = new Hashtable<String, String>();
     protected static ExecMScriptTh execMTh = null;
     protected static ExecRScriptTh execRTh = null;
     protected static ExecEScriptTh execETh = null;
@@ -198,6 +199,24 @@ public class SmartAuto {
         return errMsg;
     }
 
+    public static boolean startDTV() {
+        if (isLinuxTV) {
+            if (connDevComSuccss) {
+                // 发送ctrl+c *2
+                byte fb[] = { 0x03 };
+                spDev.write(fb);
+                spDev.write(fb);
+                spDev.write("echo 7 >/proc/sys/kernel/printk");
+                spDev.write("cli");
+                logger.debug("start DTV ");
+            }
+        } else {
+//            if (!"".equals(deviceIp)) {
+//                adbOperation.keyevent(deviceIp, keyEncode);
+//            }
+        }
+        return false;
+    }
     /**
      * <p>
      * Title: zxb.
@@ -218,8 +237,8 @@ public class SmartAuto {
             int encode, String propKey, String name) {
         String errMsg = "";
         try {
-            String key = Resources.ENCODE_PREFIX[encode] + propKey;
-            String keyEncode = htEncodeMap.get(key);
+            String key = "MTK_BTN_VOL_UP";// TODO testcode
+            String keyEncode = mMTKcodeMap.get(key);
             if (keyEncode == null || "".equals(keyEncode)) {
                 errMsg = "键值获取失败。" + key;
                 return errMsg;
@@ -248,29 +267,15 @@ public class SmartAuto {
             tblScript.setTopIndex(itemCnt + 1);
 
             // 同步执行按键操作
-            if (encode == Resources.ENCODE_KEYCODE) {
-                if (isLinuxTV) {// KENNETH whale TV
+            if (encode == 5) {// TODO zxb
+                if (isLinuxTV) {
                     if (connDevComSuccss) {
-                        spDev.write("set_ir_mode " + keyEncode);
-                        logger.debug("发送的键值为 set_ir_mode " + keyEncode);
-                    }
-                } else {
-                    if (!"".equals(deviceIp)) {
-                        adbOperation.keyevent(deviceIp, keyEncode);
+                        spDev.write("ir.rx.send " + keyEncode);
+                        logger.debug("发送的键值为 ir.rx.send " + keyEncode);
                     }
                 }
-
-            } else if (encode == Resources.ENCODE_NEC || encode == Resources.ENCODE_RC5) {
-                if (connIRComSuccss) {
-                    String[] currItemKeys = tableItem.getText(Resources.SCRIPT_COL_KEY).split("-");
-                    byte[] inputvalues = new byte[5];
-                    inputvalues[0] = (byte) (Integer.parseInt(currItemKeys[0], 16));
-                    inputvalues[1] = (byte) (Integer.parseInt(currItemKeys[1], 16));
-                    inputvalues[2] = (byte) (Integer.parseInt(currItemKeys[2], 16));
-                    inputvalues[3] = (byte) (Integer.parseInt(currItemKeys[3], 16));
-                    inputvalues[4] = (byte) (Integer.parseInt(currItemKeys[4], 16));
-                    spIR.write(inputvalues);
-                }
+            } else {
+                logger.error(encode + "");
             }
         } catch (Exception e) {
             errMsg = e.getMessage();
@@ -337,12 +342,42 @@ public class SmartAuto {
      */
     protected static void getKeyMapInfo(String propPath) {
         htEncodeMap.clear();
+        mMTKcodeMap.clear();
         getAllOtherKeyMap(properties);
         for (int i = 0; i < column.size(); i++) {
             Properties otherProp = utils.getProperties(propPath + File.separator + column.get(i)
                     + ".properties");
-            getAllOtherKeyMap(otherProp);
+            if (column.get(i).equals("MTK_platform")) {
+                logger.debug(otherProp);
+                getMTKKeyMap(otherProp);
+            } else {
+                getAllOtherKeyMap(otherProp);
+            }
         }
+    }
+
+    /**
+     * <p>
+     * Title: TODO.
+     * </p>
+     * <p>
+     * Description: TODO.
+     * </p>
+     * 
+     * @param otherProp
+     */
+    private static void getMTKKeyMap(Properties otherProp) {
+        Enumeration<Object> propKeys = otherProp.keys();
+        String propKey = "";
+        while (propKeys.hasMoreElements()) {
+            propKey = (String) propKeys.nextElement();
+            if (propKey.startsWith("MTK_BTN_")) {
+                String k = otherProp.getProperty(propKey);
+//                logger.debug("MTK_BTN_ name: " + propKey + "   value: " + k);
+                mMTKcodeMap.put(propKey, k);
+            }
+        }
+
     }
 
     /**

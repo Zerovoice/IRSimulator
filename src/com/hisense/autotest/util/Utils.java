@@ -1,6 +1,17 @@
 
 package com.hisense.autotest.util;
 
+import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableItem;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,17 +29,6 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 
 import com.hisense.autotest.common.Resources;
-
-import org.apache.log4j.Logger;
-import org.dom4j.Document;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableItem;
 
 public class Utils {
 
@@ -320,7 +320,7 @@ public class Utils {
             logger.debug("配置文件中没有设定相应的key值。" + propKey);
             return "";
         }
-        logger.debug("配置文件设置信息 " + propKey + " = " + strKey3);
+//        logger.debug("配置文件设置信息 " + propKey + " = " + strKey3);
         if (encode == Resources.ENCODE_KEYCODE) {
             // 编码选择keycode
             return strKey3;
