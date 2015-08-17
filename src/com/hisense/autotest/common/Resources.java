@@ -142,8 +142,8 @@ public class Resources {
     public final static String MTK_BTN_SMARTPIC = "MTK_BTN_SMARTPIC";
     public final static String MTK_BTN_TTTV = "MTK_BTN_TTTV";
     public final static String MTK_BTN_PIPPOS = "MTK_BTN_PIPPOS";
-    public final static String MTK_BTN_PIP_SIZE = "";
-    public final static String MTK_BTN_NETFLIX = "MTK_BTN_PIP_SIZE";
+    public final static String MTK_BTN_PIP_SIZE = "MTK_BTN_PIP_SIZE";
+    public final static String MTK_BTN_NETFLIX = "MTK_BTN_NETFLIX";
     public final static String MTK_BTN_COLORSYS = "MTK_BTN_COLORSYS";
     public final static String MTK_BTN_CAPTURE = "MTK_BTN_CAPTURE";
     public final static String MTK_BTN_SLEEP = "MTK_BTN_SLEEP";
@@ -168,6 +168,8 @@ public class Resources {
 	public final static int MODE_MANUAL = 0;
 	public final static int MODE_RANDOM = 1;
 	public final static int MODE_EXCUTE = 2;
+    public final static int MODE_MTK_SEND = 3;
+    public final static int MODE_MTK_READ = 4;
 
 	// 脚本列
 	public final static int SCRIPT_COL_INDEX = 0;

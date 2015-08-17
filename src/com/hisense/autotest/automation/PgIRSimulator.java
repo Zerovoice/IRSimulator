@@ -34,7 +34,8 @@ public class PgIRSimulator extends SmartAuto {
     private PgRIR pgRIR = new PgRIR();
     private PgEIR pgEIR = new PgEIR();
     private PgTrans pgTrans = new PgTrans();
-    private PgMakeCase pgZxb = new PgMakeCase();
+    private PgSendMTKKey pgMTKRecord = new PgSendMTKKey();
+    private PgReadMTKKey pgMTKRead = new PgReadMTKKey();
     public static Group grpRandom;
     public static Group grpMaunal;
     public static Group grpExecute;
@@ -197,12 +198,19 @@ public class PgIRSimulator extends SmartAuto {
         tbtmTrans.setControl(grpTrans);
         pgTrans.createTransContents(shell, grpTrans);
         // zxb mode
-        TabItem tbtmzxb = new TabItem(tabFolder, SWT.NONE);
-        tbtmzxb.setText("zxb");
+        TabItem tbtmtkrecord = new TabItem(tabFolder, SWT.NONE);
+        tbtmtkrecord.setText("MTKRecord");
 
-        Group grpZXB = new Group(tabFolder, SWT.NONE);
-        tbtmzxb.setControl(grpZXB);
-        pgZxb.createMContents(shell, grpZXB);
+        Group grpMTKRecord = new Group(tabFolder, SWT.NONE);
+        tbtmtkrecord.setControl(grpMTKRecord);
+        pgMTKRecord.createMContents(shell, grpMTKRecord);
+
+        TabItem tbtmtkread = new TabItem(tabFolder, SWT.NONE);
+        tbtmtkread.setText("MTKRead");
+
+        Group grpMTKRead = new Group(tabFolder, SWT.NONE);
+        tbtmtkread.setControl(grpMTKRead);
+        pgMTKRead.createEContents(shell, grpMTKRead);
 
     }
 
@@ -227,6 +235,10 @@ public class PgIRSimulator extends SmartAuto {
             pgRIR.controlLinkage();
         } else if (tabItemIndex == 2) {
             pgEIR.controlLinkage();
+        } else if (tabItemIndex == 4) {
+            pgMTKRecord.controlLinkage();
+        } else if (tabItemIndex == 5) {
+            pgMTKRead.controlLinkage();
         }
     }
     

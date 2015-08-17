@@ -237,7 +237,7 @@ public class SmartAuto {
             int encode, String propKey, String name) {
         String errMsg = "";
         try {
-            String key = "MTK_BTN_VOL_UP";// TODO testcode
+            String key = propKey;
             String keyEncode = mMTKcodeMap.get(key);
             if (keyEncode == null || "".equals(keyEncode)) {
                 errMsg = "键值获取失败。" + key;
@@ -776,7 +776,7 @@ public class SmartAuto {
      * 停止脚本运行
      */
     protected static void stopExec(int mode) {
-        if (Resources.MODE_MANUAL == mode) {
+        if (Resources.MODE_MANUAL == mode || Resources.MODE_MTK_SEND == mode) {
             if (execMTh != null) {
                 execMTh.stopRun();
                 execMTh.interrupt();
@@ -786,7 +786,7 @@ public class SmartAuto {
                 execRTh.stopRun();
                 execRTh.interrupt();
             }
-        } else if (Resources.MODE_EXCUTE == mode) {
+        } else if (Resources.MODE_EXCUTE == mode || Resources.MODE_MTK_READ == mode) {
             if (execETh != null) {
                 execETh.stopRun();
                 execETh.interrupt();

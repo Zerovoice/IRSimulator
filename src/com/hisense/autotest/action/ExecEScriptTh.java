@@ -1,14 +1,15 @@
 package com.hisense.autotest.action;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import org.apache.log4j.Logger;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import com.hisense.autotest.automation.PgEIR;
+import com.hisense.autotest.automation.PgReadMTKKey;
 import com.hisense.autotest.automation.SmartAuto;
 import com.hisense.autotest.bean.ExecCondInfo;
 import com.hisense.autotest.common.Resources;
@@ -134,8 +135,9 @@ public class ExecEScriptTh extends ExecScript {
 		} finally {
 			thsStopRun();// 停止进程的运行
 			execStatus = false;
-			if (mode == Resources.MODE_EXCUTE) {
+            if (mode == Resources.MODE_EXCUTE || mode == Resources.MODE_MTK_READ) {
 				PgEIR.setEExecStatus(false);
+                PgReadMTKKey.setEExecStatus(false);
 				SmartAuto.amTh.clearMonitorDevices();
 				logger.debug("读取执行模式 执行进程 结束运行。");
 			}
@@ -275,6 +277,7 @@ public class ExecEScriptTh extends ExecScript {
 		}
 		// 页面控件可用性设置
 		PgEIR.setEExecStatus(true);
+        PgReadMTKKey.setEExecStatus(true);
 		// 资源监控
 		if (deviceIp != null && !"".equals(deviceIp)) {
 			SmartAuto.amTh.addMonitorDevice(deviceIp);

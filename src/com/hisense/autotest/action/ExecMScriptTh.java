@@ -1,14 +1,15 @@
 package com.hisense.autotest.action;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import org.apache.log4j.Logger;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import com.hisense.autotest.automation.PgMIR;
+import com.hisense.autotest.automation.PgSendMTKKey;
 import com.hisense.autotest.automation.SmartAuto;
 import com.hisense.autotest.bean.ExecCondInfo;
 import com.hisense.autotest.common.Resources;
@@ -133,7 +134,7 @@ public class ExecMScriptTh extends ExecScript {
                     if (!currItemKey.contains("-")) {
                         if (isLinuxTV) {
                             spDev.write("set_ir_mode " + currItemKey);
-                            logger.debug("发送的键值为 set_ir_mode " + currItemKey);
+                            logger.debug("发送的键值为 : " + currItemKey);
                         } else {
                             adbOpr.keyevent(deviceIp, currItemKey);
                         }
@@ -239,8 +240,9 @@ public class ExecMScriptTh extends ExecScript {
         if (logParserTh != null) {
             runErrMsg += logParserTh.getRstErrMsg();
         }
+        logger.debug("mode: " + mode);
         thsStopRun();// 停止进程的运行
-        if (mode == Resources.MODE_MANUAL) {
+        if (mode == Resources.MODE_MANUAL || mode == Resources.MODE_MTK_SEND) {
             testRst.addErrorMsg(runErrMsg);
             String screenshotPath = "";
             int testRstType = Resources.TEST_RST_NOTRUN;
@@ -267,6 +269,7 @@ public class ExecMScriptTh extends ExecScript {
             writeTestRpt("tmp.xml", testRst);
             writeSummary(testRstType, runErrMsg, screenshotPath);
             PgMIR.setMExecStatus(false, runErrMsg);
+            PgSendMTKKey.setMExecStatus(false, runErrMsg);
         }
         execStatus = false;
     }
@@ -280,6 +283,7 @@ public class ExecMScriptTh extends ExecScript {
         }
         // 页面控件可用性设置
         PgMIR.setMExecStatus(true, "");
+        PgSendMTKKey.setMExecStatus(true, "");
         // 资源监控
         if (deviceIp != null && !"".equals(deviceIp)) {
             SmartAuto.amTh.addMonitorDevice(deviceIp);

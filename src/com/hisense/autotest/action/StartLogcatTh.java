@@ -1,11 +1,11 @@
 package com.hisense.autotest.action;
 
-import com.hisense.autotest.serialport.DSerialPort;
-import com.hisense.autotest.util.Utils;
 import org.apache.log4j.Logger;
 
 import com.hisense.autotest.automation.PgIRSimulator;
 import com.hisense.autotest.automation.SmartAuto;
+import com.hisense.autotest.serialport.DSerialPort;
+import com.hisense.autotest.util.Utils;
 
 public class StartLogcatTh extends Thread {
     private static Logger logger = Logger.getLogger(StartLogcatTh.class);

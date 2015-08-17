@@ -1,5 +1,7 @@
 package com.hisense.autotest.serialport;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.TooManyListenersException;
 import java.util.Vector;
+
 import javax.comm.CommDriver;
 import javax.comm.CommPortIdentifier;
 import javax.comm.PortInUseException;
@@ -24,7 +27,7 @@ import javax.comm.SerialPort;
 import javax.comm.SerialPortEvent;
 import javax.comm.SerialPortEventListener;
 import javax.comm.UnsupportedCommOperationException;
-import org.apache.log4j.Logger;
+
 import com.hisense.autotest.action.ExecReceiveTh;
 import com.hisense.autotest.common.Resources;
 
@@ -397,7 +400,7 @@ public class DSerialPort implements SerialPortEventListener {
      */
     public void stopRead() {
     	try{
-    	    checkPort();
+            checkPort();
     	    write("");// 输入回车，保证串口有输出
     	}catch (Exception e) {
         }

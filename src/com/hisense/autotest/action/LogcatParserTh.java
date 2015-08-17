@@ -1,13 +1,13 @@
 ﻿package com.hisense.autotest.action;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import org.apache.log4j.Logger;
 
 public class LogcatParserTh extends Thread {
 	private static Logger logger = Logger.getLogger(LogcatParserTh.class);
@@ -103,6 +103,7 @@ public class LogcatParserTh extends Thread {
 				br = new BufferedReader(new InputStreamReader(
 						new FileInputStream(new File(filePath))));
 			}
+
 			String strLine;
 			//判断settings.xml文件中的isexist字段,重新组件validAssertList，
 			//validAssertList中包含需要验证的字符串序列
