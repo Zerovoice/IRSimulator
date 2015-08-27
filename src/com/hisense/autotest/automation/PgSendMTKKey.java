@@ -945,7 +945,7 @@ public class PgSendMTKKey extends SmartAuto {
         });
         // 5651遥控器Kenneth
         TabItem tbtmIR5651 = new TabItem(tabFolder_select, SWT.NONE);
-        tbtmIR5651.setText("5651遥控器");
+        tbtmIR5651.setText("5657遥控器");
 
         grpMIR5651 = new Group(tabFolder_select, SWT.NONE);
         tbtmIR5651.setControl(grpMIR5651);
@@ -969,7 +969,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_SOURCE, btn_source.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_INPUT_SRC, btn_source.getText(), false);
             }
         });
 
@@ -1156,7 +1156,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_MEDIA, btn_media.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_MEDIA, btn_media.getText(), false);
             }
         });
 
@@ -1178,7 +1178,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_EPG, btn_epg.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_EPG, btn_epg.getText(), false);
             }
         });
 
@@ -1211,7 +1211,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_INFO, btn_info.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_PRG_INFO, btn_info.getText(), false);
             }
         });
 
@@ -1233,7 +1233,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_FAV, btn_fav.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_FAV_CH, btn_fav.getText(), false);
             }
         });
 
@@ -1244,7 +1244,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_RETURN, btn_return.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_RETURN, btn_return.getText(), false);
             }
         });
 
@@ -1315,13 +1315,13 @@ public class PgSendMTKKey extends SmartAuto {
         });
 
         btn_hi_smart_at = new Button(grpMIR5651, SWT.NONE);
-        btn_hi_smart_at.setText("HiSmart@");
+        btn_hi_smart_at.setText("Home");
         btn_hi_smart_at.setBounds(10, 355, 80, 27);
         btn_hi_smart_at.addSelectionListener(new SelectionAdapter() {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_HI_SMART_AT, btn_hi_smart_at.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_HOME, btn_hi_smart_at.getText(), false);
             }
         });
         btn_hi_smart_at.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
@@ -1334,7 +1334,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_RED_032C, btn_red_032c.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_RED, btn_red_032c.getText(), false);
             }
         });
 
@@ -1346,7 +1346,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_355C, btn_355c.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_GREEN, btn_355c.getText(), false);
             }
         });
 
@@ -1358,7 +1358,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_YELLOWC, btn_yellowc.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_YELLOW, btn_yellowc.getText(), false);
             }
         });
 
@@ -1370,8 +1370,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_HEXACHROME_CYGANC, btn_hexachrome_cyganc.getText(),
-                        false);
+                recordKeyEnt(Resources.MTK_BTN_BLUE, btn_hexachrome_cyganc.getText(), false);
             }
         });
 
@@ -1382,7 +1381,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_PLAY, btn_play.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_PLAY, btn_play.getText(), false);
             }
         });
 
@@ -1393,7 +1392,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_PAUSE, btn_pause.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_PAUSE, btn_pause.getText(), false);
             }
         });
 
@@ -1404,7 +1403,7 @@ public class PgSendMTKKey extends SmartAuto {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                recordKeyEnt(Resources.PROPKEY_STOP, btn_stop.getText(), false);
+                recordKeyEnt(Resources.MTK_BTN_STOP, btn_stop.getText(), false);
             }
         });
 
@@ -1683,8 +1682,8 @@ public class PgSendMTKKey extends SmartAuto {
             }
             logger.debug("testRstTimePath = " + testRstTimePath);
             logger.debug("logFilePath = " + logFilePath);
-            execMScript(tblMScript, chbMExecLoop, txtMLoop, rdoMExecFixedInt, txtMExecFixedInt, "",
-                    Integer.parseInt(txtMUCInterval.getText()));
+            execMTKSendScript(tblMScript, chbMExecLoop, txtMLoop, rdoMExecFixedInt,
+                    txtMExecFixedInt, "", Integer.parseInt(txtMUCInterval.getText()));
         } catch (Exception e1) {
             logger.error(e1.getMessage(), e1);
             showMsg(shell, e1.getMessage(), SWT.ICON_ERROR);

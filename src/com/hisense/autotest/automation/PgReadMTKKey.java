@@ -46,7 +46,7 @@ import com.hisense.autotest.serialport.DSerialPort;
 
 public class PgReadMTKKey extends SmartAuto {
 
-    private static Logger logger = Logger.getLogger(PgIRSimulator.class);
+    private static Logger logger = Logger.getLogger(PgReadMTKKey.class);
     public static boolean showEndMsg = true;
 
     protected Object result;
@@ -518,17 +518,6 @@ public class PgReadMTKKey extends SmartAuto {
             showMsg(shell, "没有可执行的脚本。", SWT.ICON_INFORMATION);
             return;
         }
-        // 资源监控
-//        if (rtcECPU == null) {
-//            fECPU = SWT_AWT.new_Frame(compECPU);
-//            rtcECPU = new RealTimeChartECPU(null, 600000D);
-//            fECPU.add(rtcECPU);
-//        }
-//        if (rtcEMem == null) {
-//            fEMem = SWT_AWT.new_Frame(compEMem);
-//            rtcEMem = new RealTimeChartEMem(null, 600000D);
-//            fEMem.add(rtcEMem);
-//        }
         try {
             if ("".equals(txtEUCInterval.getText())) {
                 txtEUCInterval.setText("1");
@@ -542,7 +531,7 @@ public class PgReadMTKKey extends SmartAuto {
 ////                spIR.setDevPortParameters();
 //                spIR.setIRReceiverPortParameters();
 //            }
-            execEScript(tblEScriptFiles, tblEScript, chbEExecLoop, txtELoop, "",
+            execMTKReadScript(tblEScriptFiles, tblEScript, chbEExecLoop, txtELoop, "",
                     Integer.parseInt(txtEUCInterval.getText()));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
@@ -633,7 +622,7 @@ public class PgReadMTKKey extends SmartAuto {
      * 读取执行模式 -- 执行脚本时，页面控件的可用性状态
      */
     public static void setEExecStatus(boolean isExec) {
-        logger.debug("设置页面控件可用性。");
+        logger.debug("设置页面控件可用性。" + isExec);
         if (isExec) {
             Display.getDefault().syncExec(new Runnable() {
 

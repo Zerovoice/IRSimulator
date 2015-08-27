@@ -676,6 +676,62 @@ public class SmartAuto {
     }
 
     /**
+     * 执行脚本--MTKKeySend模式
+     */
+    protected static void execMTKSendScript(Table tblScript, Button chbExecLoop, Text txtLoop,
+            Button rdoExecFixedInt, Text txtExecFixedInt, String deviceIp, int ucInterval) {
+                try {
+            int loopTimes = 1;
+            if (chbExecLoop.getSelection()) {
+                if ("".equals(txtLoop.getText())) {
+                    loopTimes = 0;
+                } else {
+                    loopTimes = Integer.parseInt(txtLoop.getText());
+                }
+            }
+            logger.debug("执行测试次数 loop=" + loopTimes);
+            float fixedInt = 0;
+            if (rdoExecFixedInt.getSelection()) {
+                try {
+                    fixedInt = Float.parseFloat(txtExecFixedInt.getText());
+                    logger.debug("固定间隔时间 interval=" + fixedInt);
+                } catch (Exception e) {
+                    logger.error("固定间隔时间格式错误。" + e.getMessage(), e);
+                    fixedInt = 0;
+                }
+            }
+
+            ExecCondInfo execCondInfo = new ExecCondInfo();
+            execCondInfo.setLinuxTV(isLinuxTV);
+            if (connIRComSuccss) {
+                execCondInfo.setSpIR(spIR);
+            } else {
+                execCondInfo.setSpIR(null);
+            }
+            if (connDevComSuccss) {
+                execCondInfo.setSpDev(spDev);
+            } else {
+                execCondInfo.setSpDev(null);
+            }
+            execCondInfo.setTblScript(tblScript);
+            execCondInfo.setLoopTimes(loopTimes);
+            execCondInfo.setFixInterval(fixedInt);
+            execCondInfo.setLogFilePath(logFilePath);
+            execCondInfo.setDeviceIp(deviceIp);
+            execCondInfo.setRefreshRscInt(refreshRscInt);
+            execCondInfo.setTestRstTimePath(testRstTimePath);
+            execCondInfo.setMode(Resources.MODE_MTK_SEND);
+            execCondInfo.setgAssertList(gAssertList);
+            execCondInfo.setgAssertExistFlag(gAssertExistFlag);
+            execCondInfo.setUcInterval(ucInterval);
+            execMTh = new ExecMScriptTh(execCondInfo);
+            execMTh.start();
+                } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            stopExec(Resources.MODE_MTK_SEND);
+        }
+            }
+    /**
      * 执行脚本--随机模式
      */
     protected void execRScript(Table tblRScript, int encode, Button chbRExecLoop, Text txtRLoop,
@@ -769,6 +825,53 @@ public class SmartAuto {
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             stopExec(Resources.MODE_EXCUTE);
+        }
+    }
+
+    /**
+     * 执行脚本--MTKRead模式
+     */
+    protected static void execMTKReadScript(Table tblScriptFiles, Table tblScript,
+            Button chbExecLoop, Text txtLoop, String deviceIp, int ucInterval) {
+        try {
+            int loopTimes = 1;
+            if (chbExecLoop.getSelection()) {
+                if ("".equals(txtLoop.getText())) {
+                    loopTimes = 0;
+                } else {
+                    loopTimes = Integer.parseInt(txtLoop.getText());
+                }
+            }
+            logger.debug("执行测试次数 loop=" + loopTimes);
+            ExecCondInfo execCondInfo = new ExecCondInfo();
+            if (connIRComSuccss) {
+                execCondInfo.setSpIR(spIR);
+                } else {
+                execCondInfo.setSpIR(null);
+                }
+            if (connDevComSuccss) {
+                execCondInfo.setSpDev(spDev);
+            } else {
+                execCondInfo.setSpDev(null);
+            }
+            execCondInfo.setTblScriptFiles(tblScriptFiles);
+            execCondInfo.setTblScript(tblScript);
+            execCondInfo.setLoopTimes(loopTimes);
+            execCondInfo.setLogFilePath(logFilePath);
+            execCondInfo.setDeviceIp(deviceIp);
+            execCondInfo.setRefreshRscInt(refreshRscInt);
+            execCondInfo.setTestRstTimePath(testRstTimePath);
+            execCondInfo.setMode(Resources.MODE_MTK_READ);
+            execCondInfo.setgAssertList(gAssertList);
+            execCondInfo.setgAssertExistFlag(gAssertExistFlag);
+            execCondInfo.setUcInterval(ucInterval);
+            execCondInfo.setScriptRootPath(scriptRootPath);
+            execCondInfo.setLinuxTV(isLinuxTV);
+            execETh = new ExecEScriptTh(execCondInfo);
+            execETh.start();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            stopExec(Resources.MODE_MTK_READ);
         }
     }
 

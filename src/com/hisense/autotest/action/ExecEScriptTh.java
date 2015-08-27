@@ -93,7 +93,7 @@ public class ExecEScriptTh extends ExecScript {
 		}
 		execStatus = true;
 		startRun = true;
-		logger.debug("读取执行模式 执行进程 开始运行。");
+        logger.debug("mode :" + mode + " 执行进程 开始运行。");
 		try {
 			setExecCondInfoM();
 			prepareExec();// 执行前的准备工作
@@ -135,66 +135,64 @@ public class ExecEScriptTh extends ExecScript {
 		} finally {
 			thsStopRun();// 停止进程的运行
 			execStatus = false;
-            if (mode == Resources.MODE_EXCUTE || mode == Resources.MODE_MTK_READ) {
+            if (mode == Resources.MODE_EXCUTE) {
 				PgEIR.setEExecStatus(false);
+            }
+            if (mode == Resources.MODE_MTK_READ) {
                 PgReadMTKKey.setEExecStatus(false);
-				SmartAuto.amTh.clearMonitorDevices();
-				logger.debug("读取执行模式 执行进程 结束运行。");
-			}
+            }
+            SmartAuto.amTh.clearMonitorDevices();
+            logger.debug("mode :" + mode + " 进程 结束运行。");
 		}
 	}
 
 	/*
 	 * 单个用例执行结束前的操作
 	 */
-	private void teardownM() {
-		if (execMScriptTh != null) {
-			execMScriptTh.stopRun();
-			execMScriptTh.interrupt();
-			// 等待执行
-			while (true) {
-				if (execMScriptTh.getStartRun()
-						&& !execMScriptTh.getExecStatus()) {
-					break;
-				}
-			}
-		}
-		execMScriptTh = null;
-		if (logParserTh != null) {
-			runErrMsg += logParserTh.getRstErrMsg();
-		}
-		if (!"".equals(runErrMsg)) {
-			logger.error("执行中发生错误。file=" + currUCPath + "       errMsg="
-					+ runErrMsg);
-		}
-		if (mode == Resources.MODE_EXCUTE) {
-			String errMsg = "";
-			String screenshotPath = "";
-			int testRstType = Resources.TEST_RST_PASS;
-			if (!"".equals(toolChkMsg)) {
-				errMsg = toolChkMsg;
-				testRstType = Resources.TEST_RST_FAIL;
-			} else if (runErrMsg != null && !"".equals(runErrMsg)) {
-				testRstType = Resources.TEST_RST_FAIL;
-				errMsg = runErrMsg;
-				if (deviceIp != null && !"".equals(deviceIp)) {
-					if (!new File(testRstScreenFolder).exists()) {
-						new File(testRstScreenFolder).mkdirs();
-					}
-					screenshotPath = testRstScreenFolder
-							+ utils.getCurrTime(Resources.FORMAT_TIME_PATH)
-							+ ".png";
-					// adbOpr.takeScreenshot(deviceIp, screenshotPath);
-				}
-			}
-			if (testRst != null) {
-				testRst.addErrorMsg(errMsg);
-				writeTestRpt(currUCPath.substring(scriptRootPath.length()),
-						testRst);
-			}
-			writeSummary(testRstType, toolChkMsg, screenshotPath);
-		}
-	}
+    private void teardownM() {
+        if (execMScriptTh != null) {
+            execMScriptTh.stopRun();
+            execMScriptTh.interrupt();
+            // 等待执行
+            while (true) {
+                if (execMScriptTh.getStartRun() && !execMScriptTh.getExecStatus()) {
+                    break;
+                }
+            }
+        }
+        execMScriptTh = null;
+        if (logParserTh != null) {
+            runErrMsg += logParserTh.getRstErrMsg();
+        }
+        if (!"".equals(runErrMsg)) {
+            logger.error("执行中发生错误。file=" + currUCPath + "       errMsg=" + runErrMsg);
+        }
+        if (mode == Resources.MODE_EXCUTE || mode == Resources.MODE_MTK_READ) {
+            String errMsg = "";
+            String screenshotPath = "";
+            int testRstType = Resources.TEST_RST_PASS;
+            if (!"".equals(toolChkMsg)) {
+                errMsg = toolChkMsg;
+                testRstType = Resources.TEST_RST_FAIL;
+            } else if (runErrMsg != null && !"".equals(runErrMsg)) {
+                testRstType = Resources.TEST_RST_FAIL;
+                errMsg = runErrMsg;
+                if (deviceIp != null && !"".equals(deviceIp)) {
+                    if (!new File(testRstScreenFolder).exists()) {
+                        new File(testRstScreenFolder).mkdirs();
+                    }
+                    screenshotPath = testRstScreenFolder
+                            + utils.getCurrTime(Resources.FORMAT_TIME_PATH) + ".png";
+                    // adbOpr.takeScreenshot(deviceIp, screenshotPath);
+                }
+            }
+            if (testRst != null) {
+                testRst.addErrorMsg(errMsg);
+                writeTestRpt(currUCPath.substring(scriptRootPath.length()), testRst);
+            }
+            writeSummary(testRstType, toolChkMsg, screenshotPath);
+        }
+    }
 
 	/*
 	 * 开始执行单个用例
@@ -271,45 +269,47 @@ public class ExecEScriptTh extends ExecScript {
 	/*
 	 * 执行前的准备：页面控件、其他操作线程
 	 */
-	private void prepareExec() throws Exception {
-		if (mode != Resources.MODE_EXCUTE) {
-			return;
-		}
-		// 页面控件可用性设置
-		PgEIR.setEExecStatus(true);
-        PgReadMTKKey.setEExecStatus(true);
-		// 资源监控
-		if (deviceIp != null && !"".equals(deviceIp)) {
-			SmartAuto.amTh.addMonitorDevice(deviceIp);
-			// 清空设备logcat
-			adbOpr.clearLogcat(deviceIp);
-			recordResrcTh = new RecordResrcTh(deviceIp, refreshRscInt,
-					Resources.MODE_EXCUTE, testRstTimePath);
-			recordResrcTh.start();
-		}
-		if (logFilePath != null && !"".equals(logFilePath)) {
-			File f = new File(logFilePath);
-			if (!f.exists()) {
-				f.getParentFile().mkdirs();
-				f.createNewFile();
-			}
-			// 记录日志
-			if (spDev != null) {
-				logRecorderTh = new LogRecorderTh(spDev, logFilePath);
-			} else if (deviceIp != null && !"".equals(deviceIp)) {
-				logRecorderTh = new LogRecorderTh(deviceIp, logFilePath);
-			}
-			if (logRecorderTh != null) {
-				logRecorderTh.start();
-				// 日志验证
-				if (gAssertList != null && gAssertList.size() > 0) {
-					logParserTh = new LogcatParserTh(logFilePath, gAssertList,
-							gAssertExistFlag);
-					logParserTh.start();
-				}
-			}
-		}
-	}
+    private void prepareExec() throws Exception {
+        if (mode != Resources.MODE_EXCUTE && mode != Resources.MODE_MTK_READ) {
+            return;
+        }
+        // 页面控件可用性设置
+        if (mode == Resources.MODE_EXCUTE) {
+            PgEIR.setEExecStatus(true);
+        }
+        if (mode == Resources.MODE_MTK_READ) {
+            PgReadMTKKey.setEExecStatus(true);
+        }
+        // 资源监控
+        if (deviceIp != null && !"".equals(deviceIp)) {
+            SmartAuto.amTh.addMonitorDevice(deviceIp);
+            // 清空设备logcat
+            adbOpr.clearLogcat(deviceIp);
+            recordResrcTh = new RecordResrcTh(deviceIp, refreshRscInt, mode, testRstTimePath);
+            recordResrcTh.start();
+        }
+        if (logFilePath != null && !"".equals(logFilePath)) {
+            File f = new File(logFilePath);
+            if (!f.exists()) {
+                f.getParentFile().mkdirs();
+                f.createNewFile();
+            }
+            // 记录日志
+            if (spDev != null) {
+                logRecorderTh = new LogRecorderTh(spDev, logFilePath);
+            } else if (deviceIp != null && !"".equals(deviceIp)) {
+                logRecorderTh = new LogRecorderTh(deviceIp, logFilePath);
+            }
+            if (logRecorderTh != null) {
+                logRecorderTh.start();
+                // 日志验证
+                if (gAssertList != null && gAssertList.size() > 0) {
+                    logParserTh = new LogcatParserTh(logFilePath, gAssertList, gAssertExistFlag);
+                    logParserTh.start();
+                }
+            }
+        }
+    }
 
 	/*
 	 * 停止所有进程

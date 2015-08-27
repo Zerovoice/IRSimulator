@@ -224,8 +224,7 @@ public class ExecScript extends Thread {
                     TableItem tblItem;
                     for (int i = 0; i < stepCnt; i++) {
                         tblItem = tblScript.getItem(i);
-                        testRst.setRstStepNodes(
-                                i,
+                        testRst.setRstStepNodes(i,
                                 new String[] { tblItem.getText(Resources.SCRIPT_COL_KEY),
                                         tblItem.getText(Resources.SCRIPT_COL_CONTENT),
                                         tblItem.getText(Resources.SCRIPT_COL_INTERVAL),

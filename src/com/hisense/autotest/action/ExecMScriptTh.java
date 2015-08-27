@@ -1,3 +1,4 @@
+
 package com.hisense.autotest.action;
 
 import org.apache.log4j.Logger;
@@ -69,7 +70,7 @@ public class ExecMScriptTh extends ExecScript {
                 defaultFileIndex = tblScript.getSelectionIndex();
             }
         });
-        if (mode == Resources.MODE_MANUAL) {
+        if (mode == Resources.MODE_MANUAL || mode == Resources.MODE_MTK_SEND) {
             currStepIndex = -1;
             initTestRpt(tblScript);
         }
@@ -100,6 +101,10 @@ public class ExecMScriptTh extends ExecScript {
         startRun = true;
         if (mode == Resources.MODE_MANUAL) {
             logger.debug("录制回放模式 执行进程 开始运行。");
+        } else if (mode == Resources.MODE_MTK_SEND) {
+            logger.debug("MTKSend模式 执行进程 开始运行。");
+        } else if (mode == Resources.MODE_MTK_READ) {
+            logger.debug("MTKRead模式 执行进程 开始运行。");
         }
         try {
             prepareExec();// 执行前的准备工作
@@ -110,10 +115,8 @@ public class ExecMScriptTh extends ExecScript {
                 if (actLoop > 1) {
                     utils.pause(ucInterval);
                     String[] step = testRst.getRstStepNodes(currStepIndex);
-                    step[Resources.SCRIPT_COL_INTERVAL - 1] = String
-                            .valueOf(Float
-                                    .parseFloat(step[Resources.SCRIPT_COL_INTERVAL - 1])
-                                    + ucInterval);
+                    step[Resources.SCRIPT_COL_INTERVAL - 1] = String.valueOf(
+                            Float.parseFloat(step[Resources.SCRIPT_COL_INTERVAL - 1]) + ucInterval);
                     testRst.setRstStepNodes(currStepIndex, step);
                     initTestRptDup(tblScript);
                 }
@@ -131,16 +134,21 @@ public class ExecMScriptTh extends ExecScript {
                         defaultFileIndex = -1;
                     }
                     getDataFromPg();
-                    if (!currItemKey.contains("-")) {
-                        if (isLinuxTV) {
-                            spDev.write("set_ir_mode " + currItemKey);
-                            logger.debug("发送的键值为 : " + currItemKey);
-                        } else {
-                            adbOpr.keyevent(deviceIp, currItemKey);
-                        }
+                    if (mode == Resources.MODE_MANUAL) {
+                        if (!currItemKey.contains("-")) {
+                            if (isLinuxTV) {
+                                spDev.write("set_ir_mode " + currItemKey);
+                                logger.debug("发送的键值为 : " + currItemKey);
+                            } else {
+                                adbOpr.keyevent(deviceIp, currItemKey);
+                            }
 
-                    } else {
-                        inputIRKey();
+                        } else {
+                            inputIRKey();
+                        }
+                    } else if (mode == Resources.MODE_MTK_SEND || mode == Resources.MODE_MTK_READ) {
+                        spDev.write("ir.rx.send " + currItemKey);
+                        logger.debug("发送的键值为 ir.rx.send " + currItemKey);
                     }
                     if (logParserTh != null && !logParserTh.getAssertRst()) {
                         stopRun = true;
@@ -169,7 +177,7 @@ public class ExecMScriptTh extends ExecScript {
                         testRst.setStepFlag(currStepIndex, true);
                     }
                 }
-                //回到表中的第一个
+                // 回到表中的第一个
                 Display.getDefault().syncExec(new Runnable() {
 
                     @Override
@@ -185,7 +193,7 @@ public class ExecMScriptTh extends ExecScript {
             runErrMsg += e.getMessage();
         } finally {
             teardown();
-            if (mode == Resources.MODE_MANUAL) {
+            if (mode == Resources.MODE_MANUAL || mode == Resources.MODE_MTK_SEND) {
                 SmartAuto.amTh.clearMonitorDevices();
                 logger.debug("录制回放模式 执行进程 结束运行。");
             }
@@ -215,8 +223,8 @@ public class ExecMScriptTh extends ExecScript {
         } else {
             actInterval = 0;
         }
-        testRst.setRstStepNodes(currStepIndex, new String[] { currItemKey,
-                currItemCont, String.valueOf(actInterval), currItemAss });
+        testRst.setRstStepNodes(currStepIndex, new String[] { currItemKey, currItemCont,
+                String.valueOf(actInterval), currItemAss });
     }
 
     /*
@@ -250,17 +258,13 @@ public class ExecMScriptTh extends ExecScript {
                 testRstType = Resources.TEST_RST_FAIL;
                 if (deviceIp != null && !"".equals(deviceIp)) {
                     screenshotPath = testRstScreenFolder
-                            + utils.getCurrTime(Resources.FORMAT_TIME_PATH)
-                            + ".png";
+                            + utils.getCurrTime(Resources.FORMAT_TIME_PATH) + ".png";
                     if (!new File(testRstScreenFolder).exists()) {
                         new File(testRstScreenFolder).mkdirs();
                     }
                     // adbOpr.takeScreenshot(deviceIp, screenshotPath);
-                    testRst.addPic(
-                            currStepIndex,
-                            "./"
-                                    + screenshotPath.substring(testRstTimePath
-                                            .length()));
+                    testRst.addPic(currStepIndex,
+                            "./" + screenshotPath.substring(testRstTimePath.length()));
                 }
             } else {
                 testRstType = Resources.TEST_RST_PASS;
@@ -268,8 +272,12 @@ public class ExecMScriptTh extends ExecScript {
             }
             writeTestRpt("tmp.xml", testRst);
             writeSummary(testRstType, runErrMsg, screenshotPath);
-            PgMIR.setMExecStatus(false, runErrMsg);
-            PgSendMTKKey.setMExecStatus(false, runErrMsg);
+            if (mode == Resources.MODE_MANUAL) {
+                PgMIR.setMExecStatus(false, runErrMsg);
+            }
+            if (mode == Resources.MODE_MTK_SEND) {
+                PgSendMTKKey.setMExecStatus(false, runErrMsg);
+            }
         }
         execStatus = false;
     }
@@ -278,19 +286,22 @@ public class ExecMScriptTh extends ExecScript {
      * 执行前的准备：页面控件、其他操作线程
      */
     private void prepareExec() throws Exception {
-        if (mode != Resources.MODE_MANUAL) {
+        if (mode != Resources.MODE_MANUAL && mode != Resources.MODE_MTK_SEND) {
             return;
         }
         // 页面控件可用性设置
-        PgMIR.setMExecStatus(true, "");
-        PgSendMTKKey.setMExecStatus(true, "");
+        if (mode == Resources.MODE_MANUAL) {
+            PgMIR.setMExecStatus(true, "");
+        }
+        if (mode == Resources.MODE_MTK_SEND) {
+            PgSendMTKKey.setMExecStatus(true, "");
+        }
         // 资源监控
         if (deviceIp != null && !"".equals(deviceIp)) {
             SmartAuto.amTh.addMonitorDevice(deviceIp);
             // 清空设备logcat
             adbOpr.clearLogcat(deviceIp);
-            recordResrcTh = new RecordResrcTh(deviceIp, refreshRscInt,
-                    Resources.MODE_MANUAL, testRstTimePath);
+            recordResrcTh = new RecordResrcTh(deviceIp, refreshRscInt, mode, testRstTimePath);
             recordResrcTh.start();
         }
         if (logFilePath != null && !"".equals(logFilePath)) {
@@ -309,8 +320,7 @@ public class ExecMScriptTh extends ExecScript {
                 logRecorderTh.start();
                 // 日志验证
                 if (gAssertList != null && gAssertList.size() > 0) {
-                    logParserTh = new LogcatParserTh(logFilePath, gAssertList,
-                            gAssertExistFlag);
+                    logParserTh = new LogcatParserTh(logFilePath, gAssertList, gAssertExistFlag);
                     logParserTh.start();
                 }
             }
@@ -341,6 +351,8 @@ public class ExecMScriptTh extends ExecScript {
     public void stopRun() {
         if (mode == Resources.MODE_MANUAL) {
             logger.debug("录制回放模式 执行进程 停止运行。");
+        } else if (mode == Resources.MODE_MTK_SEND) {
+            logger.debug("MTKSend 执行进程 停止运行。");
         }
         stopRun = true;
     }
