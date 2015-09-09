@@ -141,7 +141,7 @@ public class SmartAuto {
             String key = Resources.ENCODE_PREFIX[encode] + propKey;
             String keyEncode = htEncodeMap.get(key);
             if (keyEncode == null || "".equals(keyEncode)) {
-                errMsg = "键值获取失败。" + key;
+                errMsg = "Fail to get KeyValue:" + key;
                 return errMsg;
             }
             String strInt = "";
@@ -467,7 +467,7 @@ public class SmartAuto {
         BufferedWriter bwScript = null;
         try {
             if (mode != Resources.MODE_EXCUTE && new File(filePath).exists()) {
-                if (!showSelMsg(shell, "用例文件已存在，是否覆盖？", SWT.ICON_INFORMATION)) {
+                if (!showSelMsg(shell, "Override the file?", SWT.ICON_INFORMATION)) {
                     return false;
                 }
             }
@@ -492,10 +492,10 @@ public class SmartAuto {
             String xmlFilePath = filePath.substring(0, filePath.length() - ".csv".length())
                     + ".xml";
             createXmlUC(tblScript, xmlFilePath);
-            showMsg(shell, "保存成功。", SWT.ICON_INFORMATION);
+            showMsg(shell, "Save success。", SWT.ICON_INFORMATION);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
-            showMsg(shell, "保存失败。\n" + e.getMessage(), SWT.ICON_INFORMATION);
+            showMsg(shell, "Save failed。\n" + e.getMessage(), SWT.ICON_INFORMATION);
             return false;
         } finally {
             try {
@@ -947,7 +947,7 @@ public class SmartAuto {
      */
     protected static boolean showSelMsg(Shell shell, String msg, int level) {
         MessageBox msgBox = new MessageBox(shell, SWT.OK | level | SWT.CANCEL | SWT.CENTER);
-        msgBox.setText("提示信息");
+        msgBox.setText("Info");
         msgBox.setMessage(msg);
         if (msgBox.open() == SWT.OK) {
             return true;

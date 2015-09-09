@@ -63,7 +63,7 @@ public class PgReadMTKKey extends SmartAuto {
     public static Group grpESetTool;
     private static Group grpEScript;
     private static Group grpEAction;
-    private static Label label_18;
+    private static Label mlblSerialPort;
     public static Combo comboEDevCom;
     public static Label lEDevComStatus;
     private static Button btnEDevComRefresh;
@@ -82,10 +82,10 @@ public class PgReadMTKKey extends SmartAuto {
 
     private static String eSelFilePath = "";
     private static Text txtEUCInterval;
-    private Label label_6;
-    private Label label_15;
+    private Label mlblS;
+    private Label mlblTestCaseInterval;
     private TableColumn tblclmnNewColumn;
-    private TableColumn tableColumn_4;
+    private TableColumn mtblclmnVerification;
     private Button btnEEditVerPoint;
     private Button btnEDelSeled;
     private Button btnESaveScript;
@@ -135,7 +135,7 @@ public class PgReadMTKKey extends SmartAuto {
         tabFolder.setBounds(0, 0, 784, 642);
 
         TabItem tbtmExecute = new TabItem(tabFolder, SWT.NONE);
-        tbtmExecute.setText(Resources.OPTION_EXCUTE);
+        tbtmExecute.setText("Read script mode");
 
         grpExecute = new Group(tabFolder, SWT.NONE);
         tbtmExecute.setControl(grpExecute);
@@ -150,7 +150,7 @@ public class PgReadMTKKey extends SmartAuto {
         isLinuxTV = true;// zxb mode
         // 脚本导入
         grpEScriptFiles = new Group(grpExecute, SWT.NONE);
-        grpEScriptFiles.setText("\u811A\u672C\u5BFC\u5165");
+        grpEScriptFiles.setText("Read script");
         grpEScriptFiles.setBounds(10, 89, 375, 339);
 
         txtEScriptPath = new Text(grpEScriptFiles, SWT.BORDER);
@@ -165,7 +165,7 @@ public class PgReadMTKKey extends SmartAuto {
             }
         });
         btnESelect.setBounds(262, 26, 49, 27);
-        btnESelect.setText("\u9009\u62E9");
+        btnESelect.setText("Select");
 
         tblEScriptFiles = new Table(grpEScriptFiles, SWT.BORDER | SWT.FULL_SELECTION);
         tblEScriptFiles.setBounds(10, 57, 355, 272);
@@ -198,9 +198,9 @@ public class PgReadMTKKey extends SmartAuto {
         tblclmnNo_2.setWidth(35);
         tblclmnNo_2.setText("No.");
 
-        TableColumn tableColumn = new TableColumn(tblEScriptFiles, SWT.NONE);
-        tableColumn.setWidth(299);
-        tableColumn.setText("\u540D\u79F0");
+        TableColumn tblclmnName = new TableColumn(tblEScriptFiles, SWT.NONE);
+        tblclmnName.setWidth(299);
+        tblclmnName.setText("Name");
 
         btnERead = new Button(grpEScriptFiles, SWT.NONE);
         btnERead.addSelectionListener(new SelectionAdapter() {
@@ -210,16 +210,16 @@ public class PgReadMTKKey extends SmartAuto {
                 readScriptFiles(txtEScriptPath.getText());
             }
         });
-        btnERead.setText("\u8BFB\u53D6");
+        btnERead.setText("Read");
         btnERead.setBounds(316, 26, 49, 27);
         // 工具设置
         grpESetTool = new Group(grpExecute, SWT.NONE);
-        grpESetTool.setText("\u5DE5\u5177\u8BBE\u7F6E");
+        grpESetTool.setText("Settings");
         grpESetTool.setBounds(10, 20, 375, 63);
 
-        label_18 = new Label(grpESetTool, SWT.NONE);
-        label_18.setText("\u7535\u89C6\u4E32\u53E3");
-        label_18.setBounds(10, 25, 61, 17);
+        mlblSerialPort = new Label(grpESetTool, SWT.NONE);
+        mlblSerialPort.setText("Serial port");
+        mlblSerialPort.setBounds(10, 25, 61, 17);
 
         comboEDevCom = new Combo(grpESetTool, SWT.NONE);
         comboEDevCom.setItems(comDev);
@@ -238,7 +238,7 @@ public class PgReadMTKKey extends SmartAuto {
         });
 
         lEDevComStatus = new Label(grpESetTool, SWT.NONE);
-        lEDevComStatus.setText("\u672A\u8FDE\u63A5");
+        lEDevComStatus.setText("NotConnected");
         lEDevComStatus.setBounds(167, 25, 49, 17);
 
         btnEDevComRefresh = new Button(grpESetTool, SWT.NONE);
@@ -249,7 +249,7 @@ public class PgReadMTKKey extends SmartAuto {
                 refreshCom(spDev);
             }
         });
-        btnEDevComRefresh.setText("\u5237\u65B0");
+        btnEDevComRefresh.setText("Refresh");
         btnEDevComRefresh.setBounds(228, 20, 41, 27);
 
         btnEDevConnCom = new Button(grpESetTool, SWT.NONE);
@@ -265,7 +265,7 @@ public class PgReadMTKKey extends SmartAuto {
                 }
             }
         });
-        btnEDevConnCom.setText("\u8FDE\u63A5");
+        btnEDevConnCom.setText("Connect");
         btnEDevConnCom.setBounds(276, 20, 41, 27);
 
         btnEDevDisConnCom = new Button(grpESetTool, SWT.NONE);
@@ -277,12 +277,12 @@ public class PgReadMTKKey extends SmartAuto {
                 connDevComSuccss = false;
             }
         });
-        btnEDevDisConnCom.setText("\u65AD\u5F00");
+        btnEDevDisConnCom.setText("DisC");
         btnEDevDisConnCom.setEnabled(false);
         btnEDevDisConnCom.setBounds(324, 20, 41, 27);
         // 执行操作
         grpEAction = new Group(grpExecute, SWT.NONE);
-        grpEAction.setText("\u6267\u884C\u64CD\u4F5C");
+        grpEAction.setText("Run");
         grpEAction.setBounds(10, 434, 375, 73);
 
         btnEExec = new Button(grpEAction, SWT.NONE);
@@ -293,7 +293,7 @@ public class PgReadMTKKey extends SmartAuto {
                 doEExecScript();
             }
         });
-        btnEExec.setText("\u6267\u884C");
+        btnEExec.setText("Run");
         btnEExec.setBounds(262, 38, 49, 27);
 
         btnEStopExec = new Button(grpEAction, SWT.NONE);
@@ -304,21 +304,21 @@ public class PgReadMTKKey extends SmartAuto {
                 stopExec(Resources.MODE_EXCUTE);
             }
         });
-        btnEStopExec.setText("\u505C\u6B62");
+        btnEStopExec.setText("Stop");
         btnEStopExec.setEnabled(false);
         btnEStopExec.setBounds(316, 38, 49, 27);
 
         chbEExecLoop = new Button(grpEAction, SWT.CHECK);
-        chbEExecLoop.setText("\u5FAA\u73AF\u6267\u884C");
+        chbEExecLoop.setText("Cycle");
         chbEExecLoop.setBounds(10, 22, 69, 17);
 
         txtELoop = new Text(grpEAction, SWT.BORDER);
         txtELoop.setText("0");
         txtELoop.setBounds(116, 22, 47, 17);
 
-        Label label_20 = new Label(grpEAction, SWT.NONE);
-        label_20.setText("\u6B21");
-        label_20.setBounds(169, 22, 33, 17);
+        Label lblTimes = new Label(grpEAction, SWT.NONE);
+        lblTimes.setText("Times");
+        lblTimes.setBounds(169, 22, 33, 17);
 
         txtEUCInterval = new Text(grpEAction, SWT.BORDER);
         txtEUCInterval.setText("1");
@@ -337,23 +337,23 @@ public class PgReadMTKKey extends SmartAuto {
             }
         });
 
-        label_6 = new Label(grpEAction, SWT.NONE);
-        label_6.setText("\u79D2");
-        label_6.setBounds(169, 48, 33, 17);
+        mlblS = new Label(grpEAction, SWT.NONE);
+        mlblS.setText("S");
+        mlblS.setBounds(169, 48, 33, 17);
 
-        label_15 = new Label(grpEAction, SWT.NONE);
-        label_15.setText("\u7528\u4F8B\u95F4\u7684\u95F4\u9694\u65F6\u95F4");
-        label_15.setBounds(10, 48, 100, 17);
+        mlblTestCaseInterval = new Label(grpEAction, SWT.NONE);
+        mlblTestCaseInterval.setText("Testcase interval");
+        mlblTestCaseInterval.setBounds(10, 48, 100, 17);
 
         btn_receiver = new Button(grpEAction, SWT.CHECK);
         btn_receiver.setBounds(262, 20, 80, 17);
-        btn_receiver.setText("红外接收器");
+        btn_receiver.setText("IR");
 
         tabFolder_3 = new TabFolder(grpExecute, SWT.NONE);
         tabFolder_3.setBounds(391, 20, 382, 552);
 
         TabItem tbtmEScript = new TabItem(tabFolder_3, SWT.NONE);
-        tbtmEScript.setText("\u811A\u672C\u5185\u5BB9");
+        tbtmEScript.setText("Steps");
 
         grpEScript = new Group(tabFolder_3, SWT.NONE);
         tbtmEScript.setControl(grpEScript);
@@ -438,24 +438,24 @@ public class PgReadMTKKey extends SmartAuto {
         tblclmnNewColumn.setWidth(35);
         tblclmnNewColumn.setText("No.");
 
-        TableColumn tableColumn_1 = new TableColumn(tblEScript, SWT.NONE);
-        tableColumn_1.setWidth(110);
-        tableColumn_1.setText("\u952E\u503C");
+        TableColumn tblclmnKeyvalue = new TableColumn(tblEScript, SWT.NONE);
+        tblclmnKeyvalue.setWidth(110);
+        tblclmnKeyvalue.setText("KeyValue");
 
-        TableColumn tableColumn_2 = new TableColumn(tblEScript, SWT.NONE);
-        tableColumn_2.setWidth(95);
-        tableColumn_2.setText("\u8BF4\u660E");
+        TableColumn tblclmnInstructions = new TableColumn(tblEScript, SWT.NONE);
+        tblclmnInstructions.setWidth(95);
+        tblclmnInstructions.setText("Instructions");
 
-        TableColumn tableColumn_3 = new TableColumn(tblEScript, SWT.NONE);
-        tableColumn_3.setWidth(45);
-        tableColumn_3.setText("\u95F4\u9694");
+        TableColumn tblclmnInterval = new TableColumn(tblEScript, SWT.NONE);
+        tblclmnInterval.setWidth(45);
+        tblclmnInterval.setText("Interval");
 
-        tableColumn_4 = new TableColumn(tblEScript, SWT.NONE);
-        tableColumn_4.setWidth(48);
-        tableColumn_4.setText("\u9A8C\u8BC1\u70B9");
+        mtblclmnVerification = new TableColumn(tblEScript, SWT.NONE);
+        mtblclmnVerification.setWidth(48);
+        mtblclmnVerification.setText("Verification");
 
         btnEEditVerPoint = new Button(grpEScript, SWT.NONE);
-        btnEEditVerPoint.setText("\u7F16\u8F91\u9A8C\u8BC1\u70B9");
+        btnEEditVerPoint.setText("Edit verif");
         btnEEditVerPoint.setBounds(10, 485, 72, 27);
         btnEEditVerPoint.addSelectionListener(new SelectionAdapter() {
 
@@ -466,7 +466,7 @@ public class PgReadMTKKey extends SmartAuto {
         });
 
         btnEDelSeled = new Button(grpEScript, SWT.NONE);
-        btnEDelSeled.setText("\u5220\u9664\u9009\u4E2D\u9879");
+        btnEDelSeled.setText("Delete");
         btnEDelSeled.setBounds(221, 485, 72, 27);
         btnEDelSeled.addSelectionListener(new SelectionAdapter() {
 
@@ -484,7 +484,7 @@ public class PgReadMTKKey extends SmartAuto {
         });
 
         btnESaveScript = new Button(grpEScript, SWT.NONE);
-        btnESaveScript.setText("\u4FDD\u5B58\u811A\u672C");
+        btnESaveScript.setText("Save Script");
         btnESaveScript.setBounds(299, 485, 66, 27);
         btnESaveScript.addSelectionListener(new SelectionAdapter() {
 
@@ -493,7 +493,7 @@ public class PgReadMTKKey extends SmartAuto {
                 int scriptFileIndex = tblEScriptFiles.getSelectionIndex();
                 if (scriptFileIndex != -1) {
                     if (tblEScript.getItemCount() < 1) {
-                        showMsg(shell, "脚本为空，保存失败。", SWT.ICON_INFORMATION);
+                        showMsg(shell, "Non Steps, save failed!", SWT.ICON_INFORMATION);
                         return;
                     }
                     String savefile = tblEScriptFiles.getItem(scriptFileIndex)
@@ -515,7 +515,7 @@ public class PgReadMTKKey extends SmartAuto {
             return;
         }
         if (tblEScriptFiles.getItemCount() == 0) {
-            showMsg(shell, "没有可执行的脚本。", SWT.ICON_INFORMATION);
+            showMsg(shell, "No scripts!", SWT.ICON_INFORMATION);
             return;
         }
         try {
@@ -580,14 +580,14 @@ public class PgReadMTKKey extends SmartAuto {
         boolean connRst = true;
         try {
             if (serialPort == null || "".equals(serialPort)) {
-                showMsg(shell, "请选择串口。", SWT.ICON_INFORMATION);
+                showMsg(shell, "Please select the serial port。", SWT.ICON_INFORMATION);
                 connRst = false;
             } else if (serialPort.equals(serialPortO)
                     && ((isIR && connDevComSuccss) || (!isIR && connIRComSuccss))) {
-                showMsg(shell, "遥控器串口与设备串口重复，请选择其他串口。", SWT.ICON_ERROR);
+                showMsg(shell, "Please select another serial port。", SWT.ICON_ERROR);
                 connRst = false;
             } else if (!sp.selectPort(serialPort)) {
-                showMsg(shell, "串口连接失败。", SWT.ICON_ERROR);
+                showMsg(shell, "Connect failed。", SWT.ICON_ERROR);
                 connRst = false;
             }
             if (connRst) {
@@ -612,7 +612,7 @@ public class PgReadMTKKey extends SmartAuto {
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            showMsg(shell, "串口连接失败。\n" + e.getMessage(), SWT.ICON_ERROR);
+            showMsg(shell, "Connect failed!\n" + e.getMessage(), SWT.ICON_ERROR);
             connRst = false;
         }
         return connRst;
@@ -731,7 +731,7 @@ public class PgReadMTKKey extends SmartAuto {
         if (!"".equals(txtEScriptPath.getText())) {
             ddSelect.setFilterPath(txtEScriptPath.getText());
         }
-        ddSelect.setText("脚本选择");
+        ddSelect.setText("Select script");
         String selfile = ddSelect.open();
         if (selfile != null) {
             txtEScriptPath.setText(selfile);
@@ -746,11 +746,11 @@ public class PgReadMTKKey extends SmartAuto {
         tblEScriptFiles.removeAll();
         scriptRootPath = "";
         if (dir == null || "".equals(dir)) {
-            showMsg(shell, "请选择脚本目录。", SWT.ICON_ERROR);
+            showMsg(shell, "Select folder", SWT.ICON_ERROR);
             return;
         }
         if (!new File(dir).exists()) {
-            showMsg(shell, "选择的目录不存在。" + dir, SWT.ICON_ERROR);
+            showMsg(shell, "Folder not exist!" + dir, SWT.ICON_ERROR);
             return;
         }
         ArrayList<String> filePaths = utils.getScriptFiles(dir);
@@ -773,7 +773,7 @@ public class PgReadMTKKey extends SmartAuto {
     public static boolean readScriptFromFile(String filePath, boolean showMsg) {
         try {
             if (!new File(filePath).exists()) {
-                String msg = "文件不存在。" + filePath;
+                String msg = "File not exist:" + filePath;
                 logger.error(msg);
                 if (showMsg) {
                     showMsg(shell, msg, SWT.ICON_ERROR);
@@ -835,7 +835,7 @@ public class PgReadMTKKey extends SmartAuto {
     private void updAssertPoints(Table tblScript) {
         int selItemIndex = tblScript.getSelectionIndex();
         if (selItemIndex < 0) {
-            showMsg(shell, "请先选择脚本中的Step操作。", SWT.ICON_INFORMATION);
+            showMsg(shell, "Please select a step!", SWT.ICON_INFORMATION);
             return;
         }
         TableItem selTblItem = tblScript.getItem(selItemIndex);
@@ -862,7 +862,7 @@ public class PgReadMTKKey extends SmartAuto {
         Menu menu = new Menu(tblEScriptFiles);
         tblEScriptFiles.setMenu(menu);
         MenuItem menuItem = new MenuItem(menu, SWT.PUSH);
-        menuItem.setText("删除");
+        menuItem.setText("Delete");
         menuItem.addListener(SWT.Selection, new Listener() {
 
             @Override

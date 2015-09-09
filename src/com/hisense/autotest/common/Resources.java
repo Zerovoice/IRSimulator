@@ -219,11 +219,11 @@ public class Resources {
 	public final static int KEY_RANGE_AC = 3;// 全按键，含电源键
 
     // 文字
-    public final static String TEXT_OFF_CONN = "未连接";
-    public final static String TEXT_ON_CONN = "已连接";
+    public final static String TEXT_OFF_CONN = "NotConn";
+    public final static String TEXT_ON_CONN = "Conn";
 
     // 遥控器编码
-    public final static String[] ENCODES = new String[] { "NEC码", "RC5码", "keycode" };
+    public final static String[] ENCODES = new String[] { "NEC", "RC5", "keycode" };
     // 待转换脚本列
     public final static int TRANS_COL_PATH = 0;
     
